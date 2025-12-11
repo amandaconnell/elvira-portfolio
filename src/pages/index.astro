@@ -1,16 +1,12 @@
 ---
-
+import Layout from "../layouts/Layout.astro"
+const pageTitle = "Elvira Holmberg"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout pageTitle={pageTitle}>
+    <h2>Kategori 1</h2>
+    <h2>Kategori 2</h2>
+    <h2>Kategori 3</h2>
+    <h2>Kategori 4</h2>
+    <h2>Kategori 5</h2>
+</Layout>

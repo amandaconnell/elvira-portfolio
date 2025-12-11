@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro"
+const pageTitle = "Kontakt"
+---
+
+<Layout pageTitle={pageTitle}>
+    <p><a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a></p>
+<form action="">
+    <label for="name">Namn</label>
+    <input type="text" name="name" id="name">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    <label for="message">Meddelande</label>
+    <input type="text" name="message" id="message" required>
+</form>
+</Layout>
