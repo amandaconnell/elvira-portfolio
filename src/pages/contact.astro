@@ -4,13 +4,19 @@ const pageTitle = "Kontakt"
 ---
 
 <Layout pageTitle={pageTitle}>
-    <p><a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a></p>
-<form action="">
-    <label for="name">Namn</label>
-    <input type="text" name="name" id="name">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
-    <label for="message">Meddelande</label>
-    <input type="text" name="message" id="message" required>
-</form>
+    <div class="flex justify-evenly my-12">
+        <div class="flex flex-col gap-8">
+            <h1 class="font-secondary text-6xl font-bold">{pageTitle}</h1>
+            <a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a>
+        </div>
+        <form action="" class="flex flex-col">
+            <label for="name">Namn</label>
+            <input type="text" name="name" id="name" class="py-1 w-94 border rounded-sm mb-6">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="py-1 w-94 border rounded-sm mb-6" required>
+            <label for="message">Meddelande</label>
+            <textarea name="message" id="message" class="py-1 w-94 border rounded-sm mb-6" rows="8" required></textarea>
+            <button type="submit" class="flex self-start border rounded-full py-2 px-4">Skicka meddelande</button>
+        </form>
+    </div>
 </Layout>
