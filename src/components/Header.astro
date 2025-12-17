@@ -1,15 +1,17 @@
+---
+import Navigation from "./Navigation.astro"
+import MobileMenu from "./MobileMenu.astro"
+---
+
 <div class="flex justify-between items-center py-6">
-    <div class="flex items-center gap-3">
-        <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="h-[55px]">
-        <div class="flex flex-col">
-            <p class="font-bold text-2xl">ELVIRA HOLMBERG</p>
-            <p>FOTOGRAF</p>
-        </div>
+  <div class="flex items-center gap-3">
+    <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="h-[55px]">
+    <div class="flex flex-col">
+      <p class="font-bold text-2xl">ELVIRA HOLMBERG</p>
+      <p>FOTOGRAF</p>
     </div>
-    <nav class="flex gap-12 uppercase font-medium text-xl">
-        <a href="/">Hem</a>
-        <a href="/portfolio/">Portfolio</a>
-        <a href="/about/">Om mig</>
-        <a href="/contact/">Kontakt</a>
-    </nav>
+  </div>
+  <Navigation />
 </div>
+
+<MobileMenu />

@@ -1,0 +1,141 @@
+---
+import DropdownLinks from "./DropdownLinks.astro"
+---
+
+<nav>
+  <ul id="nav-links" class="hidden xl:flex gap-12 uppercase font-medium text-xl items-center">
+    <li class="hover:font-bold"><a href="/">Hem</a></li>
+    <li class="relative w-full xl:w-auto">
+      <button 
+        aria-expanded="false" 
+        aria-controls="dropdown-menu" 
+        class="dropdown uppercase w-full text-left hover:font-bold xl:text-center"
+        id="dropdown-button">
+          Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-sm"></i>
+      </button>
+          <ul 
+            id="dropdown-menu" 
+            class="hidden bg-white rounded pt-4 xl:absolute xl:mt-0 xl:top-full xl:left-0 xl:w-48"
+            role="menu"
+            aria-labelledby="dropdown-button">
+              <DropdownLinks />
+          </ul>
+    </li>
+    <li class="hover:font-bold"><a href="/about/">Om mig</a></li>
+    <li class="hover:font-bold"><a href="/contact/">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- Knapp för att öppna mobilmenyn -->
+<button id="mobile-menu-button" class="xl:hidden focus:outline-none transition-transform duration-300 ease-in-out" aria-label="Toggle menu">
+  <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
+  </svg>
+</button>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const dropdownButton = document.getElementById("dropdown-button");
+  const dropdownMenu = document.getElementById("dropdown-menu");
+  const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu")
+  const mobileDropdownButton = document.getElementById("mobile-dropdown-button")
+
+  const menuSVG = `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
+  </svg>`;
+
+  const closeSVG = `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="6" y1="6" x2="18" y2="18" />
+    <line x1="6" y1="18" x2="18" y2="6" />
+  </svg>`;
+
+  const desktopDropdownIcon = document.getElementById("chevron-desktop");
+  const mobileDropdownIcon = document.getElementById("chevron-mobile");
+
+  function setIconState(iconEl: HTMLElement | null, isOpen: any) {
+    if (!iconEl) return;
+    if (isOpen) {
+      iconEl.classList.add("fa-chevron-up");
+      iconEl.classList.remove("fa-chevron-down");
+    } else {
+      iconEl.classList.add("fa-chevron-down");
+      iconEl.classList.remove("fa-chevron-up");
+    }
+  }
+
+  function setDesktopIconState(isOpen: boolean) {
+    setIconState(desktopDropdownIcon, isOpen);
+  }
+
+  function setMobileIconState(isOpen: boolean) {
+    setIconState(mobileDropdownIcon, isOpen);
+  }
+
+  // Öppnar mobilmenyn och skiftar ikon
+  mobileMenuButton?.addEventListener("click", () => {
+    const isHidden = mobileMenu?.classList.contains("hidden");
+    mobileMenu?.classList.toggle("hidden");
+
+    mobileMenuButton.style.transition = "opacity 0.2s ease";
+    mobileMenuButton.style.opacity = "0";
+    setTimeout(() => {
+      mobileMenuButton.innerHTML = isHidden ? closeSVG : menuSVG;
+      mobileMenuButton.style.opacity = "1";
+    }, 200);
+  });
+
+  // Öppnar undermenyn inuti mobilmenyn
+  mobileDropdownButton?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const expanded = mobileDropdownButton.getAttribute("aria-expanded") === "true";
+    const newState = !expanded;
+    mobileDropdownButton.setAttribute("aria-expanded", String(newState));
+    mobileDropdownMenu?.classList.toggle("hidden");
+    setMobileIconState(newState);
+  });
+
+  // Stänger mobilmenyns undermeny när man klickar utanför undermenyn
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof Node) {
+      const isOpen = mobileDropdownButton?.getAttribute("aria-expanded") === "true";
+      if (
+        isOpen &&
+        !mobileDropdownMenu?.contains(target) &&
+        !mobileDropdownButton?.contains(target)
+      ) {
+        mobileDropdownMenu?.classList.add("hidden");
+        mobileDropdownButton?.setAttribute("aria-expanded", "false");
+        setMobileIconState(false);
+      }
+    }
+  });
+
+  // Öppnar undermenyn på desktop
+  dropdownButton?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const expanded = dropdownButton.getAttribute("aria-expanded") === "true";
+    const newState = !expanded;
+    dropdownButton.setAttribute("aria-expanded", String(newState));
+    dropdownMenu?.classList.toggle("hidden");
+    setDesktopIconState(newState);
+  });
+
+  // Stänger undermenyn när man klickar utanför på desktop
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof Node) {
+      const isOpen = dropdownButton?.getAttribute("aria-expanded") === "true";
+      if (
+        isOpen &&
+        !dropdownMenu?.contains(target) &&
+        !dropdownButton?.contains(target)
+      ) {
+        dropdownMenu?.classList.add("hidden");
+        dropdownButton?.setAttribute("aria-expanded", "false");
+        setDesktopIconState(false);
+      }
+    }
+  });
+</script>
