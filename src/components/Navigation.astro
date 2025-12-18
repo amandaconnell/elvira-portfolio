@@ -3,15 +3,15 @@ import DropdownLinks from "./DropdownLinks.astro"
 ---
 
 <nav>
-  <ul id="nav-links" class="hidden xl:flex gap-12 uppercase font-medium text-xl items-center">
+  <ul id="nav-links" class="hidden xl:flex gap-12 font-medium text-xl items-center">
     <li class="hover:font-bold"><a href="/">Hem</a></li>
     <li class="relative w-full xl:w-auto">
       <button 
         aria-expanded="false" 
         aria-controls="dropdown-menu" 
-        class="dropdown uppercase w-full text-left hover:font-bold xl:text-center"
+        class="dropdown w-full text-left hover:font-bold xl:text-center"
         id="dropdown-button">
-          Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-sm"></i>
+          Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-xs"></i>
       </button>
           <ul 
             id="dropdown-menu" 

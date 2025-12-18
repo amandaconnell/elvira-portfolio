@@ -7,6 +7,16 @@
     const iconWrapper = document.getElementById('icon-wrapper');
     const html = document.documentElement;
 
+    function updateTogglePosition() {
+        if (html.classList.contains('dark')) {
+            iconWrapper?.classList.remove('-translate-x-6'); // Flyttar ikonen åt vänster
+        } else {
+            iconWrapper?.classList.add('-translate-x-6'); // Flyttar ikonen åt höger
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', updateTogglePosition);
+
     // När sidan laddas hämtas sparat val annars visas mörkt läge
     if (localStorage.getItem('theme') === 'light') {
         html.classList.remove('dark');
@@ -18,11 +28,10 @@
         if (html.classList.contains('dark')) {
             html.classList.remove('dark'); // Byter till ljust tema
             localStorage.setItem('theme', 'light');
-            iconWrapper?.classList.add('-translate-x-6'); // Flyttar ikonen åt vänster
         } else {
             html.classList.add('dark'); // Byter till mörkt tema
             localStorage.setItem('theme', 'dark');
-            iconWrapper?.classList.remove('-translate-x-6'); // Flyttar ikonen åt höger
         }
+        updateTogglePosition();
     });
 </script>
