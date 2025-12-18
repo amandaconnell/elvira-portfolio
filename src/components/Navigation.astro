@@ -3,9 +3,9 @@ import DropdownLinks from "./DropdownLinks.astro"
 ---
 
 <nav>
-  <ul id="nav-links" class="hidden xl:flex gap-12 font-medium text-xl items-center">
+  <ul id="nav-links" class="hidden lg:flex gap-12 font-medium text-xl items-center">
     <li class="hover:font-bold"><a href="/">Hem</a></li>
-    <li class="relative w-full xl:w-auto">
+    <li class="relative w-full lg:w-auto">
       <button 
         aria-expanded="false" 
         aria-controls="dropdown-menu" 
@@ -15,7 +15,7 @@ import DropdownLinks from "./DropdownLinks.astro"
       </button>
           <ul 
             id="dropdown-menu" 
-            class="hidden bg-white dark:bg-zinc-900 rounded pt-4 xl:absolute xl:mt-0 xl:top-full xl:left-0 xl:w-48 z-50"
+            class="hidden bg-white dark:bg-zinc-900 rounded pt-4 lg:absolute lg:mt-0 lg:top-full lg:left-0 lg:w-48 z-50"
             role="menu"
             aria-labelledby="dropdown-button">
               <DropdownLinks />
@@ -27,7 +27,7 @@ import DropdownLinks from "./DropdownLinks.astro"
 </nav>
 
 <!-- Knapp för att öppna mobilmenyn -->
-<button id="mobile-menu-button" class="xl:hidden focus:outline-none transition-transform duration-300 ease-in-out cursor-pointer" aria-label="Toggle menu">
+<button id="mobile-menu-button" class="lg:hidden focus:outline-none transition-transform duration-300 ease-in-out cursor-pointer" aria-label="Toggle menu">
   <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
   </svg>
