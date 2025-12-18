@@ -3,22 +3,28 @@ import Navigation from "./Navigation.astro"
 import MobileMenu from "./MobileMenu.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 
-const { isHome = false } = Astro.props;
+const { isHome } = Astro.props;
 ---
 
-<header class={`flex justify-between items-center py-6 mx-4 xl:mx-16 bg-transparent w-screen z-50 ${isHome ? 'fixed top-0 left-0 text-white' : 'relative'}`}>
-  <a href="/" class="flex items-center gap-3">
-    <!-- Logo för mörkt tema -->
-    <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="hidden dark:block h-[55px]">
-    <!-- Logo för ljust tema -->
-    <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="block dark:hidden h-[55px]">
+<header class={`flex justify-between items-center py-6 bg-transparent w-full z-50 ${isHome ? 'fixed top-0 left-0 text-white' : 'relative'}`}>
+  <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16">
+    {isHome ? (
+      // Visar alltid vit logotyp på startsidan
+      <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="h-[55px]" />
+    ) : (
+      // På övriga visas logotyp baserad på mörkt eller ljust tema
+      <>
+        <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="hidden dark:block h-[55px]" />
+        <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="block dark:hidden h-[55px]" />
+      </>
+    )}
     <div class="flex flex-col">
       <p class="font-bold text-2xl">ELVIRA HOLMBERG</p>
       <p>FOTOGRAF</p>
     </div>
   </a>
-  <div class="flex gap-4 xl:gap-12">
-    <ThemeToggle />
+  <div class="flex gap-4 mr-4 xl:mr-16 xl:gap-12">
+    {!isHome && <ThemeToggle />}
     <Navigation />
   </div>
 </header>
