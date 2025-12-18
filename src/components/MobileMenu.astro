@@ -2,14 +2,14 @@
 import DropdownLinks from "./DropdownLinks.astro";
 ---
 
-<div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-gray-300">
+<div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-zinc-900 border-t border-gray-300">
   <ul class="flex flex-col py-4 uppercase font-medium text-xl">
-    <li class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg"><a href="/">Hem</a></li>
+    <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg"><a href="/">Hem</a></li>
     <li>
       <button 
         aria-expanded="false" 
         aria-controls="mobile-dropdown-menu" 
-        class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg uppercase w-full text-left"
+        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg uppercase w-full text-left"
         id="mobile-dropdown-button"
       >
         Portfolio <i id="chevron-mobile" class="fa-solid fa-chevron-down fa-sm"></i>
@@ -23,7 +23,7 @@ import DropdownLinks from "./DropdownLinks.astro";
         <DropdownLinks />
       </ul>
     </li>
-    <li class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg"><a href="/about/">Om mig</a></li>
-    <li class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg"><a href="/contact/">Kontakt</a></li>
+    <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg"><a href="/about/">Om mig</a></li>
+    <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg"><a href="/contact/">Kontakt</a></li>
   </ul>
 </div>

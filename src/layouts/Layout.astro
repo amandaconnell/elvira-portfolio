@@ -9,15 +9,30 @@ import Footer from '../components/Footer.astro'
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="sv">
+<html lang="sv" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="https://kit.fontawesome.com/ecf5d3bcbf.js" crossorigin="anonymous"></script>
+    <!-- För att undvika FOUC -->
+    <script is:inline>
+    {
+      (function() {
+        try {
+          const theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    }
+  </script>
   </head>
-  <body class="mx-4 xl:mx-16">
+  <body class="mx-4 xl:mx-16 dark:bg-zinc-900 dark:text-zinc-300">
     <Header />
     <main>
       <slot />  

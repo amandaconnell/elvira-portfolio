@@ -1,0 +1,28 @@
+<label id="theme-toggle" class="relative w-15 h-8 border rounded-full cursor-pointer">
+    <span id="icon-wrapper" class="absolute top-0.5 right-1 py-px px-1.5 rounded-full bg-zinc-200 dark:bg-zinc-600 transition-transform duration-300"><i class="fa-solid fa-moon fa-xs fa-rotate-by" style="--fa-rotate-angle: 230deg;"></i></span>
+</label>
+
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const iconWrapper = document.getElementById('icon-wrapper');
+    const html = document.documentElement;
+
+    // När sidan laddas hämtas sparat val annars visas mörkt läge
+    if (localStorage.getItem('theme') === 'light') {
+        html.classList.remove('dark');
+    } else {
+        html.classList.add('dark');
+    }
+
+    themeToggle?.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark'); // Byter till ljust tema
+            localStorage.setItem('theme', 'light');
+            iconWrapper?.classList.add('-translate-x-6'); // Flyttar ikonen åt vänster
+        } else {
+            html.classList.add('dark'); // Byter till mörkt tema
+            localStorage.setItem('theme', 'dark');
+            iconWrapper?.classList.remove('-translate-x-6'); // Flyttar ikonen åt höger
+        }
+    });
+</script>
