@@ -14,14 +14,20 @@ const panels = [
 
 <Layout isHome={true} pageTitle={pageTitle}>
     <div class="flex mb-12 z-10 text-white">
-        {panels.map(panel => (
-            <CategoryPanel
-                imageSrc={panel.imageSrc}
-                altText={panel.altText}
-                category={panel.category}
-                linkHref={panel.linkHref}
-            />
-        ))}
+        <div class="hidden lg:flex">
+            {panels.map(panel => (
+                <CategoryPanel
+                    imageSrc={panel.imageSrc}
+                    altText={panel.altText}
+                    category={panel.category}
+                    linkHref={panel.linkHref}
+                />
+            ))}
+        </div>
+        <div class="lg:hidden">
+            <div>
+            </div>
+        </div>
     </div>
 </Layout>
 

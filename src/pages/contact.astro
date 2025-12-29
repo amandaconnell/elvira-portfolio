@@ -4,19 +4,23 @@ const pageTitle = "Kontakt"
 ---
 
 <Layout pageTitle={pageTitle}>
-    <div class="flex justify-evenly my-12 mx-4 xl:mx-16">
+    <div class="flex flex-col sm:flex-row gap-12 sm:gap-0 justify-evenly mt-12 mb-20 sm:my-12 mx-4 xl:mx-16">
         <div class="flex flex-col gap-8">
             <h1 class="font-secondary text-6xl font-bold">{pageTitle}</h1>
-            <a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a>
+            <div>
+                <i class="fa-solid fa-square-envelope fa-2xl"></i>
+                <a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a>
+            </div>
         </div>
+        <!-- Prev w-04 on boxes -->
         <form action="" class="flex flex-col">
             <label for="name">Namn</label>
-            <input type="text" name="name" id="name" class="py-1 w-94 border rounded-sm mb-6">
+            <input type="text" name="name" id="name" class="py-1 sm:w-94 border rounded-sm mb-6">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="py-1 w-94 border rounded-sm mb-6" required>
+            <input type="email" name="email" id="email" class="py-1 sm:w-94 border rounded-sm mb-6" required>
             <label for="message">Meddelande</label>
-            <textarea name="message" id="message" class="py-1 w-94 border rounded-sm mb-6" rows="8" required></textarea>
-            <button type="submit" class="flex self-start border rounded-full py-2 px-4">Skicka meddelande</button>
+            <textarea name="message" id="message" class="py-1 sm:w-94 border rounded-sm mb-6" rows="8" required></textarea>
+            <button type="submit" class="flex self-start border rounded-full py-2 px-4 cursor-pointer">Skicka meddelande</button>
         </form>
     </div>
 </Layout>
