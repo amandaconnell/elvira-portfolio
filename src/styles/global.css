@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-xs: 26rem;
   --default-font-family: "Poppins", sans-serif;
   --font-secondary: "Playfair Display", serif;
 }
