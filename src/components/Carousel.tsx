@@ -17,11 +17,13 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   function prev() {
-    setCurrentIndex((currentIndex - 1 + panels.length) % panels.length);
+    setCurrentIndex((currentIndex) => Math.max(currentIndex - 1, 0));
   }
 
   function next() {
-    setCurrentIndex((currentIndex + 1) % panels.length);
+    setCurrentIndex((currentIndex) =>
+      Math.min(currentIndex + 1, panels.length - 1)
+    );
   }
 
   // Get 3 panels starting from currentIndex, wrapping around if needed
@@ -52,7 +54,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
       <div class="hidden lg:flex xl:hidden relative">
         {visiblePanels().map((panel, index) => (
           <div
-            class="flex flex-2 hover:flex-6 w-1/3 transition-all duration-500 ease-out"
+            class="flex flex-2 hover:flex-6 w-1/3 transition-all duration-500 ease-out overflow-hidden"
             key={index}
           >
             <CategoryPanel
@@ -92,6 +94,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
           class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
           onClick={prev}
           aria-label="Previous panel"
+          disabled={currentIndex === 0}
         >
           <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
         </button>
@@ -99,6 +102,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
           class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
           onClick={next}
           aria-label="Next panel"
+          disabled={currentIndex === panels.length - 3}
         >
           <i class="fa-solid fa-circle-chevron-right fa-2xl"></i>
         </button>
