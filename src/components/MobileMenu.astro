@@ -1,9 +1,22 @@
 ---
 import DropdownLinks from "./DropdownLinks.astro";
+
+const { isHome, menuOpen } = Astro.props;
+
+const baseClasses = "xl:hidden border-t border-gray-300 left-0 right-0 top-full z-40 transition-transform duration-300 ease-in-out";
+
+const homeClasses = "bg-white dark:bg-zinc-900 text-black";
+
+const subpageClasses = "bg-white dark:bg-zinc-900";
+
+const openMenuClasses = menuOpen ? "" : "hidden";
 ---
 
-<div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-zinc-900 border-t border-gray-300">
-  <ul class="flex flex-col py-4 font-medium text-xl">
+<div
+  id="mobile-menu"
+  class={`${baseClasses} ${isHome ? homeClasses : subpageClasses} ${openMenuClasses}`}
+>
+<ul class="flex flex-col py-4 font-medium text-xl">
     <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Hem</a></li>
     <li>
       <button 
@@ -27,3 +40,30 @@ import DropdownLinks from "./DropdownLinks.astro";
     <li><a href="/contact/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Kontakt</a></li>
   </ul>
 </div>
+
+<!-- Tried doing it like this from Header, doesn't work -->
+<!-- <div id="mobile-menu" class={`hidden xl:hidden bg-white dark:bg-zinc-900 border-t border-gray-300 absolute left-0 right-0 top-full mt-0 z-45 ${isHome ? 'bg-red-500' : ''} ${menuOpen ? "translate-y-0" : "-translate-y-full"}`}>
+  <ul class="flex flex-col py-4 font-medium text-xl">
+    <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Hem</a></li>
+    <li>
+      <button 
+        aria-expanded="false" 
+        aria-controls="mobile-dropdown-menu" 
+        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg w-full text-left cursor-pointer"
+        id="mobile-dropdown-button"
+      >
+        Portfolio <i id="chevron-mobile" class="fa-solid fa-chevron-down fa-xs"></i>
+      </button>
+      <ul 
+        id="mobile-dropdown-menu" 
+        class="hidden gap-2 mt-2 ml-4 pl-4 border-l-2 border-gray-300"
+        role="menu"
+        aria-labelledby="mobile-dropdown-button"
+      >
+        <DropdownLinks />
+      </ul>
+    </li>
+    <li><a href="/about/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Om mig</a></li>
+    <li><a href="/contact/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Kontakt</a></li>
+  </ul>
+</div> -->

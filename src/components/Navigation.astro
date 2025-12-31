@@ -83,6 +83,15 @@ import DropdownLinks from "./DropdownLinks.astro"
       mobileMenuButton.innerHTML = isHidden ? closeSVG : menuSVG;
       mobileMenuButton.style.opacity = "1";
     }, 200);
+
+    const navbar = document.getElementById("navbar");
+    if (isHidden) {
+      navbar?.classList.remove("text-white");
+      navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+    } else {
+      navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+      navbar?.classList.add("text-white");
+    }
   });
 
   // Öppnar undermenyn inuti mobilmenyn

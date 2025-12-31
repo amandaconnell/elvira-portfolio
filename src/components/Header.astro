@@ -3,10 +3,42 @@ import Navigation from "./Navigation.astro"
 import MobileMenu from "./MobileMenu.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 
-const { isHome } = Astro.props;
+const { isHome, menuOpen } = Astro.props;
 ---
 
-<header class={`flex justify-between items-center py-6 bg-transparent w-full z-50 ${isHome ? 'fixed top-0 left-0 text-white' : 'relative'}`}>
+<header
+  class={`w-full z-50 ${isHome ? "fixed top-0 left-0" : "relative"}`}
+>
+  <!-- TOP BAR (flex row only) -->
+  <div id="navbar"
+  class={`flex justify-between items-center py-6 ${isHome ? "text-white" : ""}`}
+>
+    <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16">
+      {isHome ? (
+        <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="h-[55px]" />
+      ) : (
+        <>
+          <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="hidden dark:block h-[55px]" />
+          <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="block dark:hidden h-[55px]" />
+        </>
+      )}
+      <div class="flex flex-col">
+        <p class="font-bold text-xl sm:text-2xl">ELVIRA HOLMBERG</p>
+        <p class="text-sm sm:text-base">FOTOGRAF</p>
+      </div>
+    </a>
+
+    <div class="flex gap-2 ml-6 sm:gap-4 mr-4 xl:mr-16 lg:gap-12">
+      {!isHome && <ThemeToggle />}
+      <Navigation />
+    </div>
+  </div>
+
+  <!-- MOBILE MENU LIVES BELOW THE FLEX ROW -->
+  <MobileMenu menuOpen={menuOpen} />
+</header>
+
+<!-- <header class={`flex justify-between items-center py-6 bg-transparent w-full z-50 ${isHome ? 'fixed top-0 left-0 text-white' : 'relative'}`}>
   <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16">
     {isHome ? (
       // Visar alltid vit logotyp på startsidan
@@ -27,6 +59,9 @@ const { isHome } = Astro.props;
     {!isHome && <ThemeToggle />}
     <Navigation />
   </div>
-</header>
+  <MobileMenu menuOpen={menuOpen} />
+</header> -->
 
-<MobileMenu />
+<!-- This also doesn't work -->
+<!-- <MobileMenu class={isHome ? 'bg-red-500' : ''} /> -->
+ 
