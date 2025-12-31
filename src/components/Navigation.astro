@@ -3,9 +3,9 @@ import DropdownLinks from "./DropdownLinks.astro"
 ---
 
 <nav>
-  <ul id="nav-links" class="hidden xl:flex gap-12 font-medium text-xl items-center">
+  <ul id="nav-links" class="hidden lg:flex gap-12 font-medium text-xl items-center">
     <li class="hover:font-bold"><a href="/">Hem</a></li>
-    <li class="relative w-full xl:w-auto">
+    <li class="relative w-full lg:w-auto">
       <button 
         aria-expanded="false" 
         aria-controls="dropdown-menu" 
@@ -15,7 +15,7 @@ import DropdownLinks from "./DropdownLinks.astro"
       </button>
           <ul 
             id="dropdown-menu" 
-            class="hidden bg-white dark:bg-zinc-900 rounded pt-4 xl:absolute xl:mt-0 xl:top-full xl:left-0 xl:w-48 z-50"
+            class="hidden bg-white dark:bg-zinc-900 rounded pt-4 lg:absolute lg:mt-0 lg:top-full lg:left-0 lg:w-48 z-50"
             role="menu"
             aria-labelledby="dropdown-button">
               <DropdownLinks />
@@ -27,7 +27,7 @@ import DropdownLinks from "./DropdownLinks.astro"
 </nav>
 
 <!-- Knapp för att öppna mobilmenyn -->
-<button id="mobile-menu-button" class="xl:hidden focus:outline-none transition-transform duration-300 ease-in-out cursor-pointer" aria-label="Toggle menu">
+<button id="mobile-menu-button" class="lg:hidden focus:outline-none transition-transform duration-300 ease-in-out cursor-pointer" aria-label="Toggle menu">
   <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
   </svg>
@@ -83,6 +83,36 @@ import DropdownLinks from "./DropdownLinks.astro"
       mobileMenuButton.innerHTML = isHidden ? closeSVG : menuSVG;
       mobileMenuButton.style.opacity = "1";
     }, 200);
+
+    const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("eh-logo");
+    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
+    if (isHidden) {
+      if (localStorage.getItem('theme') === 'light') {
+        /* html.classList.remove('dark'); */
+        (logo as HTMLImageElement).src = "/src/logo-black.png";
+      } else {
+        /* html.classList.add('dark'); */
+        (logo as HTMLImageElement).src = "/src/logo-white.png";
+      }
+
+      if (isHome) {
+        navbar?.classList.remove("text-white");
+        navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+      } else {
+        // On subpages, maybe add a different background or keep existing styles
+        // For example, don't change navbar classes or add your own
+      }
+    } else {
+      if (isHome) {
+        navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+        navbar?.classList.add("text-white");
+        (logo as HTMLImageElement).src = "/src/logo-white.png";
+      } else {
+        // On subpages, keep the styles as they are or adjust accordingly
+      }
+    }
   });
 
   // Öppnar undermenyn inuti mobilmenyn

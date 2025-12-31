@@ -1,11 +1,84 @@
 ---
-import Layout from "../layouts/Layout.astro"
+/* import Layout from "../layouts/Layout.astro"
+import CategoryPanel from "../components/CategoryPanel.astro"
+import Carousel from "../components/Carousel.tsx";
+
 const pageTitle = "Elvira Holmberg"
+const panels = [
+    { imageSrc: '/src/frog.jpg', altText: 'Frog', category: 'Djur', linkHref: '/one/' },
+    { imageSrc: '/src/lizard.jpg', altText: 'Lizard', category: 'Natur', linkHref: '/two/' },
+    { imageSrc: '/src/moon.jpg', altText: 'Moon', category: 'Landskap', linkHref: '/three/' },
+    { imageSrc: '/src/frog.jpg', altText: 'Frog', category: 'Djur', linkHref: '/one/' },
+    { imageSrc: '/src/lizard.jpg', altText: 'Lizard', category: 'Natur', linkHref: '/two/' },
+]; */
+import Carousel from '../components/Carousel.tsx';
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Elvira Holmberg"
+const panels = [
+  {
+    imageSrc: '/src/frog.jpg',
+    altText: 'Frog',
+    category: 'Djur',
+    linkHref: '/one/',
+  },
+  {
+    imageSrc: '/src/lizard.jpg',
+    altText: 'Lizard',
+    category: 'Natur',
+    linkHref: '/two/',
+  },
+  {
+    imageSrc: '/src/moon.jpg',
+    altText: 'Moon',
+    category: 'Landskap',
+    linkHref: '/three/',
+  },
+  {
+    imageSrc: '/src/frog.jpg',
+    altText: 'Frog',
+    category: 'Djur',
+    linkHref: '/four/',
+  },
+  {
+    imageSrc: '/src/lizard.jpg',
+    altText: 'Lizard',
+    category: 'Natur',
+    linkHref: '/five/',
+  },
+];
 ---
 
 <Layout isHome={true} pageTitle={pageTitle}>
+    <Carousel client:load panels={panels} />
+</Layout>
+
+<!-- <Layout isHome={true} pageTitle={pageTitle}>
+  <Carousel panels={panels} client:load />
+</Layout> -->
+
+<!-- <Layout isHome={true} pageTitle={pageTitle}>
     <div class="flex mb-12 z-10 text-white">
-        <div class="h-screen relative flex-2 hover:flex-6 transition-all duration-500 ease-out overflow-hidden">
+        <!-- Originally hidden lg:flex -->
+        <!-- div class="flex">
+            {panels.map(panel => (
+                <CategoryPanel
+                    imageSrc={panel.imageSrc}
+                    altText={panel.altText}
+                    category={panel.category}
+                    linkHref={panel.linkHref}
+                />
+            ))}
+        </div>
+        <div class="lg:hidden">
+            <div>
+            </div>
+        </div>
+    </div>
+</Layout> -->
+
+
+        <!-- <div class="h-screen relative flex-2 hover:flex-6 transition-all duration-500 ease-out overflow-hidden">
             <img class="object-cover h-full w-full" src="/src/frog.jpg" alt="">
             <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-center">
                 <p>Kategori</p>
@@ -39,10 +112,7 @@ const pageTitle = "Elvira Holmberg"
                 <p>Kategori</p>
                 <a href="/five/"><h2 class="font-secondary text-5xl font-bold">Macro</h2></a>
             </div>
-        </div>
-    </div>
-</Layout>
-
+        </div> -->
 
 <!-- <div id="app" class="bg-[url(https://i.redd.it/78xwcik9uwla1.png)] bg-fixed bg-bottom">
 	<div class="min-h-screen flex justify-center items-center px-4 py-10 backdrop-blur bg-zinc-900/30">
