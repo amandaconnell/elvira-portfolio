@@ -24,9 +24,19 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
     setCurrentIndex((currentIndex + 1) % panels.length);
   }
 
+  // Get 3 panels starting from currentIndex, wrapping around if needed
+  const visiblePanels = () => {
+    const visible = [];
+    for (let i = 0; i < 3; i++) {
+      visible.push(panels[(currentIndex + i) % panels.length]);
+    }
+    return visible;
+  };
+
   return (
-    <div class="relative">
-      <div class="hidden lg:flex">
+    <div class="relative mb-20">
+      {/* Fem paneler */}
+      <div class="hidden xl:flex">
         {panels.map((panel, index) => (
           <CategoryPanel
             key={index}
@@ -38,7 +48,25 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
         ))}
       </div>
 
-      <div class="lg:hidden overflow-hidden relative h-screen mb-20">
+      {/* Tre paneler */}
+      <div class="hidden lg:flex xl:hidden relative">
+        {visiblePanels().map((panel, index) => (
+          <div
+            class="flex flex-2 hover:flex-6 w-1/3 transition-all duration-500 ease-out"
+            key={index}
+          >
+            <CategoryPanel
+              imageSrc={panel.imageSrc}
+              altText={panel.altText}
+              category={panel.category}
+              linkHref={panel.linkHref}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Carousel med en panel */}
+      <div class="lg:hidden overflow-hidden relative h-screen">
         {panels.map((panel, index) => (
           <div
             key={index}
@@ -56,23 +84,24 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
             />
           </div>
         ))}
+      </div>
 
-        <div class="flex absolute bottom-2 right-4">
-          <button
-            class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
-            onClick={prev}
-            aria-label="Previous panel"
-          >
-            <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
-          </button>
-          <button
-            class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
-            onClick={next}
-            aria-label="Next panel"
-          >
-            <i class="fa-solid fa-circle-chevron-right fa-2xl"></i>
-          </button>
-        </div>
+      {/* Knappar som styr carousel */}
+      <div class="flex absolute bottom-2 right-4 xl:hidden">
+        <button
+          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
+          onClick={prev}
+          aria-label="Previous panel"
+        >
+          <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </button>
+        <button
+          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
+          onClick={next}
+          aria-label="Next panel"
+        >
+          <i class="fa-solid fa-circle-chevron-right fa-2xl"></i>
+        </button>
       </div>
     </div>
   );
