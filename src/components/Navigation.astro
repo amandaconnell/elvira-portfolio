@@ -85,12 +85,33 @@ import DropdownLinks from "./DropdownLinks.astro"
     }, 200);
 
     const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("eh-logo");
+    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
     if (isHidden) {
-      navbar?.classList.remove("text-white");
-      navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+      if (localStorage.getItem('theme') === 'light') {
+        /* html.classList.remove('dark'); */
+        (logo as HTMLImageElement).src = "/src/logo-black.png";
+      } else {
+        /* html.classList.add('dark'); */
+        (logo as HTMLImageElement).src = "/src/logo-white.png";
+      }
+
+      if (isHome) {
+        navbar?.classList.remove("text-white");
+        navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+      } else {
+        // On subpages, maybe add a different background or keep existing styles
+        // For example, don't change navbar classes or add your own
+      }
     } else {
-      navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
-      navbar?.classList.add("text-white");
+      if (isHome) {
+        navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+        navbar?.classList.add("text-white");
+        (logo as HTMLImageElement).src = "/src/logo-white.png";
+      } else {
+        // On subpages, keep the styles as they are or adjust accordingly
+      }
     }
   });
 
