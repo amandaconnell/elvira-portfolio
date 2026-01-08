@@ -1,5 +1,18 @@
 ---
+import GalleryComponent from "../components/GalleryComponent";
+
 const { pageTitle } = Astro.props;
+
+const images = [
+  {
+    src: "https://placehold.co/1000x600",
+    alt: "Sunlight filtering through trees in a forest",
+  },
+  {
+    src: "https://placehold.co/700x700",
+    alt: "Close-up of waves breaking on a rocky shore",
+  },
+];
 ---
 
 <div class="mt-12 mb-20 sm:my-12 mx-4 md:mx-8 xl:mx-16">
@@ -8,7 +21,9 @@ const { pageTitle } = Astro.props;
         <p class="sm:w-[670px]">En kort beskrivning här om bilderna/motiven, om det känns relevant, annars går det också att utesluta den här delen helt och bara fokusera på bilderna.</p>
     </div>
     <!-- Bildgalleri -->
-    <div class="columns-2 sm:columns-4 gap-4 space-y-4">
+    <GalleryComponent images={images} client:load />
+
+    <!-- <div class="columns-2 sm:columns-4 gap-4 space-y-4">
         <img class="h-auto" src="https://placehold.co/600x400" alt="">
         <img class="h-auto" src="https://placehold.co/400x400" alt="">
         <img class="h-auto" src="https://placehold.co/400x500" alt="">
@@ -21,5 +36,38 @@ const { pageTitle } = Astro.props;
         <img class="h-auto" src="https://placehold.co/400x500" alt="">
         <img class="h-auto" src="https://placehold.co/600x400" alt="">
         <img class="h-auto" src="https://placehold.co/400x400" alt="">
-    </div>
+    </div> -->
 </div>
+
+
+<!-- import { useState } from "preact/hooks";
+import ImageViewer from "./ImageViewer";
+
+export default function Gallery({ images }) {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  return (
+    <>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {images.map((img, index) => (
+          <button
+            key={img.src}
+            onClick={() => setActiveIndex(index)}
+            class="focus-visible:outline focus-visible:outline-2"
+          >
+            <img src={img.src} alt={img.alt} />
+          </button>
+        ))}
+      </div>
+
+      {activeIndex !== null && (
+        <ImageViewer
+          images={images}
+          startIndex={activeIndex}
+          onClose={() => setActiveIndex(null)}
+        />
+      )}
+    </>
+  );
+}
+ -->
