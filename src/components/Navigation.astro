@@ -1,15 +1,22 @@
 ---
 import DropdownLinks from "./DropdownLinks.astro"
+
+const pathname = Astro.url.pathname;
+
+// Klasser som läggs till på länkar
+const linkClass = (path: string) => [
+  pathname === path && "pb-2 border-b-2",
+] .filter(Boolean) .join(" ");
 ---
 
 <nav>
   <ul id="nav-links" class="hidden lg:flex gap-12 font-medium text-xl items-center">
-    <li class="hover:font-bold"><a href="/">Hem</a></li>
+    <li class="hover:font-bold"><a href="/" class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
     <li class="relative w-full lg:w-auto">
       <button 
         aria-expanded="false" 
-        aria-controls="dropdown-menu" 
-        class="dropdown w-full text-left hover:font-bold xl:text-center"
+        aria-controls="dropdown-menu" aria-label="Öppna undermeny"
+        class="w-full text-left hover:font-bold xl:text-center"
         id="dropdown-button">
           Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-xs"></i>
       </button>
@@ -21,13 +28,13 @@ import DropdownLinks from "./DropdownLinks.astro"
               <DropdownLinks />
           </ul>
     </li>
-    <li class="hover:font-bold"><a href="/about/">Om mig</a></li>
-    <li class="hover:font-bold"><a href="/contact/">Kontakt</a></li>
+    <li class="hover:font-bold"><a href="/about/" class={linkClass("/about/")} aria-current={pathname === "/about/" ? "page" : undefined}>Om mig</a></li>
+    <li class="hover:font-bold"><a href="/contact/" class={linkClass("/contact/")} aria-current={pathname === "/contact/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
 </nav>
 
 <!-- Knapp för att öppna mobilmenyn -->
-<button id="mobile-menu-button" class="lg:hidden focus:outline-none transition-transform duration-300 ease-in-out cursor-pointer" aria-label="Toggle menu">
+<button id="mobile-menu-button" class="lg:hidden transition-transform duration-300 ease-in-out cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500" aria-label="Öppna meny">
   <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
   </svg>

@@ -63,7 +63,7 @@ export default function ImageViewer({
     <dialog
       ref={dialogRef}
       tabIndex={-1}
-      aria-label="Image viewer"
+      aria-label="Bildvisare"
       class=" fixed inset-0 w-screen h-screen max-w-none max-h-none m-0 p-0 bg-white/95 dark:bg-zinc-900/95 dark:text-white"
       onKeyDown={keyControls}
       style={{ border: "none" }}
@@ -72,7 +72,7 @@ export default function ImageViewer({
         <button
           onClick={close}
           class="absolute top-4 right-8 focus-visible:outline"
-          aria-label="Close image viewer"
+          aria-label="Stäng bildvisare"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -80,7 +80,7 @@ export default function ImageViewer({
         <button
           onClick={prev}
           disabled={index === 0}
-          aria-label="Previous image"
+          aria-label="Föregående bild"
           class="absolute left-4 focus-visible:outline disabled:opacity-40"
         >
           <i class="fa-solid fa-chevron-left"></i>
@@ -95,7 +95,7 @@ export default function ImageViewer({
         <button
           onClick={next}
           disabled={index === images.length - 1}
-          aria-label="Next image"
+          aria-label="Nästa bild"
           class="absolute right-8 focus-visible:outline disabled:opacity-40"
         >
           <i class="fa-solid fa-chevron-right"></i>

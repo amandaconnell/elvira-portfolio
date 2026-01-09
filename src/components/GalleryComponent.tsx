@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "preact/hooks";
 import ImageViewer from "./ImageViewer";
-import { triggerEvent } from "astro/virtual-modules/transitions-events.js";
 
 type ImageProps = {
   src: string;
@@ -36,7 +35,7 @@ export default function Gallery({ images }: GalleryProps) {
           <button
             key={img.src}
             onClick={() => setActiveIndex(index)}
-            class="focus-visible:outline-2"
+            class="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
           >
             <img src={img.src} alt={img.alt} />
           </button>

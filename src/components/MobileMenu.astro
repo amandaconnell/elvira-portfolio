@@ -10,6 +10,14 @@ const homeClasses = "bg-white dark:bg-zinc-900 text-black";
 const subpageClasses = "bg-white dark:bg-zinc-900";
 
 const openMenuClasses = menuOpen ? "" : "hidden";
+
+const pathname = Astro.url.pathname;
+
+// Klasser som läggs till på länkar
+const linkClass = (path: string) => [
+  "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg",
+  pathname === path && "font-bold",
+] .filter(Boolean) .join(" ");
 ---
 
 <div
@@ -17,11 +25,11 @@ const openMenuClasses = menuOpen ? "" : "hidden";
   class={`${baseClasses} ${isHome ? homeClasses : subpageClasses} ${openMenuClasses}`}
 >
 <ul class="flex flex-col py-4 font-medium text-xl">
-    <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Hem</a></li>
+    <li><a href="/" class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
     <li>
       <button 
         aria-expanded="false" 
-        aria-controls="mobile-dropdown-menu" 
+        aria-controls="mobile-dropdown-menu"  aria-label="Öppna undermeny"
         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg w-full text-left cursor-pointer"
         id="mobile-dropdown-button"
       >
@@ -36,8 +44,8 @@ const openMenuClasses = menuOpen ? "" : "hidden";
         <DropdownLinks />
       </ul>
     </li>
-    <li><a href="/about/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Om mig</a></li>
-    <li><a href="/contact/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg">Kontakt</a></li>
+    <li><a href="/about/" class={linkClass("/about/")} aria-current={pathname === "/about/" ? "page" : undefined}>Om mig</a></li>
+    <li><a href="/contact/" class={linkClass("/contact/")} aria-current={pathname === "/contact/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
 </div>
 

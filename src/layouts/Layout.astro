@@ -35,7 +35,7 @@ const { isHome = false } = Astro.props;
   </head>
   <body class="dark:bg-zinc-900 dark:text-zinc-300">
     <Header isHome={isHome} />
-    <main class={`${isHome ? 'min-h-screen' : 'min-h-screen'}`}>
+    <main id="main" class={`${isHome ? 'min-h-screen' : 'min-h-screen'}`}>
       <slot />  
     </main>  
     <Footer />

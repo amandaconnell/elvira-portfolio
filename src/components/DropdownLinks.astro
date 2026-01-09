@@ -1,5 +1,16 @@
-<li><a href="/one/" class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700">Kategori 1</a></li>
-<li><a href="/two/" class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700">Kategori 2</a></li>
-<li><a href="/three/" class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700">Kategori 3</a></li>
-<li><a href="/four/" class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700">Kategori 4</a></li>
-<li><a href="/five/" class="block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700">Kategori 5</a></li>
+---
+const pathname = Astro.url.pathname;
+
+// Klasser som läggs till på länkar
+const linkClass = (path: string) => [
+  "block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700",
+  pathname === path && "font-bold",
+] .filter(Boolean) .join(" ");
+---
+
+<li><a href="/one/" class={linkClass("/one/")} aria-current={pathname === "/one/" ? "page" : undefined}>Kategori 1</a></li>
+<li><a href="/two/" class={linkClass("/two/")} aria-current={pathname === "/two/" ? "page" : undefined}>Kategori 2</a></li>
+<li><a href="/three/" class={linkClass("/three/")} aria-current={pathname === "/three/" ? "page" : undefined}>Kategori 3</a></li>
+<li><a href="/four/" class={linkClass("/four/")} aria-current={pathname === "/four/" ? "page" : undefined}>Kategori 4</a></li>
+<li><a href="/five/" class={linkClass("/five/")} aria-current={pathname === "/five/" ? "page" : undefined}>Kategori 5</a></li>
+

@@ -37,6 +37,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
 
   return (
     <div class="relative mb-20">
+      <h1 class="sr-only">Elvira Holmberg: Startsida</h1>
       {/* Fem paneler */}
       <div class="hidden xl:flex">
         {panels.map((panel, index) => (
@@ -69,6 +70,26 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
 
       {/* Carousel med en panel */}
       <div class="lg:hidden overflow-hidden relative h-screen">
+        {panels.map((panel, index) => {
+          const isActive = index === currentIndex;
+
+          return (
+            <div
+              key={index}
+              hidden={!isActive}
+              class="absolute top-0 left-0 w-full h-full"
+            >
+              <CategoryPanel
+                imageSrc={panel.imageSrc}
+                altText={panel.altText}
+                category={panel.category}
+                linkHref={panel.linkHref}
+              />
+            </div>
+          );
+        })}
+      </div>
+      {/* <div class="lg:hidden overflow-hidden relative h-screen">
         {panels.map((panel, index) => (
           <div
             key={index}
@@ -86,23 +107,23 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
             />
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Knappar som styr carousel */}
       <div class="flex absolute bottom-2 right-4 xl:hidden">
         <button
-          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
+          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
           onClick={prev}
-          aria-label="Previous panel"
+          aria-label="Föregående panel"
           disabled={currentIndex === 0}
         >
           <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
         </button>
         <button
-          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded"
+          class=" z-50 transform -translate-y-1/2 text-white p-2 rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
           onClick={next}
-          aria-label="Next panel"
-          disabled={currentIndex === panels.length - 3}
+          aria-label="Nästa panel"
+          disabled={currentIndex === panels.length - 1}
         >
           <i class="fa-solid fa-circle-chevron-right fa-2xl"></i>
         </button>

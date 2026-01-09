@@ -7,14 +7,15 @@ const { isHome, menuOpen } = Astro.props;
 ---
 
 <header
-  class={`w-full z-50 ${isHome ? "fixed top-0 left-0" : "relative"}`}
+  class={`w-full z-50 ${isHome ? "fixed top-0 left-0" : "relative"}`} aria-label="Huvudnavigation"
 >
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-1 focus:left-1 focus:outline-2 focus:outline-fuchsia-500 bg-white text-black z-50">Hoppa till huvudinnehåll</a>
   <!-- TOP BAR (flex row only) -->
   <div id="navbar"
   class={`flex justify-between items-center py-6 ${isHome ? "text-white" : ""}`}
 >
-    <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16">
-      {isHome ? (
+    <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500">
+      {isHome ? ( 
         <img id="eh-logo" src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="h-[55px]" />
       ) : (
         <>
