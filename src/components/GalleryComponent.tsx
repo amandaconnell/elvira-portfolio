@@ -1,4 +1,4 @@
-/* Renderar en interaktiv galleri-vy */
+// Renderar en interaktiv galleri-vy
 
 import { useState, useRef } from "preact/hooks";
 import ImageViewer from "./ImageViewer";
@@ -16,16 +16,14 @@ export default function Gallery({ images }: GalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  // Funktion som håller reda på vilken bild som öppnats
   function openModal(index: number, button: HTMLButtonElement) {
     buttonRef.current = button;
-    setActiveIndex(index);
+    setActiveIndex(index); // Håller reda på vilken bild som öppnats
   }
 
-  // Återvänder till bilden som öppnats där modalen stängs
   function closeModal() {
     setActiveIndex(null);
-    buttonRef.current?.focus();
+    buttonRef.current?.focus(); // Återvänder till bilden som öppnats där modalen stängs
   }
 
   return (
@@ -52,20 +50,3 @@ export default function Gallery({ images }: GalleryProps) {
     </>
   );
 }
-
-/* 
-  return (
-    <>
-
-
-      {activeIndex !== null && (
-        <ImageViewer
-          images={images}
-          startIndex={activeIndex}
-          onClose={() => setActiveIndex(null)}
-        />
-      )}
-    </>
-  );
-}
- */

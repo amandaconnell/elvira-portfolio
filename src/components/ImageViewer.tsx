@@ -1,4 +1,4 @@
-/* Gör det möjligt att öppna och navigera mellan bilder i en modal */
+// Gör det möjligt att öppna och navigera mellan bilder i fullskärm
 
 import { useEffect, useRef, useState } from "preact/hooks";
 
@@ -34,23 +34,20 @@ export default function ImageViewer({
     }
   }, []);
 
-  // Funktion för att stänga modalen
   function close() {
     dialogRef.current?.close();
     onClose();
   }
 
-  // Funktion för att navigera till nästa bild
   function next() {
-    setIndex((i: number) => Math.min(i + 1, images.length - 1));
+    setIndex((i: number) => Math.min(i + 1, images.length - 1)); // Navigerar till nästa bild
   }
 
-  // Funktion för att navigera till föregående bild
   function prev() {
-    setIndex((i: number) => Math.max(i - 1, 0));
+    setIndex((i: number) => Math.max(i - 1, 0)); // Navigerar till föregående bild
   }
 
-  // Funktion för att hantera tangentbordsnavigering
+  // Kopplar funktionerna till en tangent för tangentbordsnavigering
   function keyControls(e: KeyboardEvent) {
     if (e.key === "Escape") close();
     if (e.key === "ArrowRight") next();

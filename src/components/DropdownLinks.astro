@@ -1,11 +1,11 @@
 ---
 const pathname = Astro.url.pathname;
 
-// Klasser som läggs till på länkar
+// För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
   "block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700",
   pathname === path && "font-bold",
-] .filter(Boolean) .join(" ");
+].filter(Boolean).join(" ");
 ---
 
 <li><a href="/one/" class={linkClass("/one/")} aria-current={pathname === "/one/" ? "page" : undefined}>Kategori 1</a></li>

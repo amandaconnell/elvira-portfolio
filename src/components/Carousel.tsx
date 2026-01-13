@@ -1,3 +1,5 @@
+// En interaktiv carousel som används på startsidan
+
 import type { FunctionalComponent } from "preact";
 import { useState } from "preact/hooks";
 import CategoryPanel from "./CategoryPanel";
@@ -16,30 +18,24 @@ interface CarouselProps {
 const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Håller reda på antal paneler som visas
-  const mobile_visible = 1;
-  const tablet_visible = 3;
+  // Håller reda på antal paneler som är synliga
+  const mobileVisible = 1;
+  const tabletVisible = 3;
 
-  // Navigation
   function prev(maxIndex: number) {
-    setCurrentIndex((i) => Math.max(i - 1, 0));
+    setCurrentIndex((i) => Math.max(i - 1, 0)); // Navigerar bakåt
   }
 
   function next(maxIndex: number) {
-    setCurrentIndex((i) => Math.min(i + 1, maxIndex));
+    setCurrentIndex((i) => Math.min(i + 1, maxIndex)); // Navigerar framåt
   }
 
-  // Renderar paneler
   function renderPanels(
     visibleCount: number,
-    wrapperClass = "",
-    isFlex = false
+    wrapperClass = "", // För att justera layout
+    isFlex = false // För att panelerna alltid ska ha samma bredd
   ) {
     const maxIndex = Math.max(0, panels.length - visibleCount);
-    /* const visiblePanels = panels.slice(
-      currentIndex,
-      currentIndex + visibleCount
-    ); */
 
     return (
       <>
@@ -52,7 +48,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
               return (
                 <div
                   key={`${panel.category}-${index}`}
-                  hidden={!isVisible} // removes from tab order
+                  hidden={!isVisible} // Hindrar att man med tab-knappen kan navigera till paneler som inte är synliga
                   class={
                     isFlex
                       ? `flex-2 hover:flex-6 focus-within:flex-6 transition-all duration-500 ease-out overflow-hidden`
@@ -100,52 +96,6 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
     );
   }
 
-  /* function renderPanels(visibleCount: number, wrapperClass = "") {
-    const maxIndex = Math.max(0, panels.length - visibleCount);
-    const visiblePanels = panels.slice(
-      currentIndex,
-      currentIndex + visibleCount
-    );
-
-    return (
-      <>
-        <div class={wrapperClass}>
-          {visiblePanels.map((panel, index) => (
-            <CategoryPanel
-              key={`${panel.category}-${index}`}
-              imageSrc={panel.imageSrc}
-              altText={panel.altText}
-              category={panel.category}
-              linkHref={panel.linkHref}
-            />
-          ))}
-        </div>
-
-        {visibleCount < panels.length && (
-          <div class="flex absolute bottom-2 right-4 gap-2">
-            <button
-              onClick={() => prev(maxIndex)}
-              disabled={currentIndex === 0}
-              aria-label="Föregående panel"
-              class="p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500 disabled:opacity-40"
-            >
-              <i class="fa-solid fa-circle-chevron-left fa-2xl"></i>
-            </button>
-
-            <button
-              onClick={() => next(maxIndex)}
-              disabled={currentIndex === maxIndex}
-              aria-label="Nästa panel"
-              class="p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500 disabled:opacity-40"
-            >
-              <i class="fa-solid fa-circle-chevron-right fa-2xl"></i>
-            </button>
-          </div>
-        )}
-      </>
-    );
-  } */
-
   return (
     <div class="relative mb-20">
       <h1 class="sr-only">Elvira Holmberg: Startsida</h1>
@@ -170,69 +120,15 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
 
       {/* Tablet: 3 paneler synliga åt gången */}
       <div class="hidden lg:flex xl:hidden relative">
-        {renderPanels(tablet_visible, "flex w-full", true)}
+        {renderPanels(tabletVisible, "flex w-full", true)}
       </div>
 
       {/* Mobil: 1 panel synlig åt gången */}
       <div class="lg:hidden relative h-screen overflow-hidden">
-        {renderPanels(mobile_visible, "w-full h-full", true)}
+        {renderPanels(mobileVisible, "w-full h-full", true)}
       </div>
     </div>
   );
 };
 
 export default Carousel;
-
-/* import { useState } from 'preact/hooks';
-import CategoryPanel from './CategoryPanel.astro';
-
-const [currentIndex, setCurrentIndex] = useState(0);
-
-function prev() {
-  setCurrentIndex((currentIndex - 1 + panels.length) % panels.length);
-}
-
-function next() {
-  setCurrentIndex((currentIndex + 1) % panels.length);
-}
-
-<div class="relative">
-  <div class="hidden lg:flex">
-    {panels.map((panel: { imageSrc: any; altText: any; category: any; linkHref: any; }) => (
-      <CategoryPanel
-        imageSrc={panel.imageSrc}
-        altText={panel.altText}
-        category={panel.category}
-        linkHref={panel.linkHref}
-      />
-    ))}
-  </div>
-
-  <div class="lg:hidden overflow-hidden relative h-screen">
-    {panels.map((panel: { imageSrc: any; altText: any; category: any; linkHref: any; }, index: number) => (
-      <div class={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-        <CategoryPanel
-          imageSrc={panel.imageSrc}
-          altText={panel.altText}
-          category={panel.category}
-          linkHref={panel.linkHref}
-        />
-      </div>
-    ))}
-
-    <button
-      class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded"
-      onClick={prev}
-      aria-label="Previous panel"
-    >
-      ←
-    </button>
-    <button
-      class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded"
-      onClick={next}
-      aria-label="Next panel"
-    >
-      →
-    </button>
-  </div>
-</div> */

@@ -1,17 +1,17 @@
 ---
 import DropdownLinks from "./DropdownLinks.astro"
-
 const pathname = Astro.url.pathname;
 
-// Klasser som läggs till på länkar
+// För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
   pathname === path && "pb-2 border-b-2",
-] .filter(Boolean) .join(" ");
+].filter(Boolean).join(" ");
 ---
 
 <nav>
   <ul id="nav-links" class="hidden lg:flex gap-12 font-medium text-xl items-center">
     <li class="hover:font-bold"><a href="/" class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
+
     <li class="relative w-full lg:w-auto">
       <button 
         aria-expanded="false" 
@@ -20,14 +20,16 @@ const linkClass = (path: string) => [
         id="dropdown-button">
           Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-xs"></i>
       </button>
-          <ul 
-            id="dropdown-menu" 
-            class="hidden bg-white text-black dark:bg-zinc-900 dark:text-zinc-300 rounded py-4 lg:absolute lg:mt-4 lg:top-full lg:left-0 lg:w-48 z-50"
-            role="menu"
-            aria-labelledby="dropdown-button">
-              <DropdownLinks />
-          </ul>
+      
+      <ul 
+        id="dropdown-menu" 
+        class="hidden bg-white text-black dark:bg-zinc-900 dark:text-zinc-300 rounded py-4 lg:absolute lg:mt-4 lg:top-full lg:left-0 lg:w-48 z-50"
+        role="menu"
+        aria-labelledby="dropdown-button">
+          <DropdownLinks />
+        </ul>
     </li>
+
     <li class="hover:font-bold"><a href="/about/" class={linkClass("/about/")} aria-current={pathname === "/about/" ? "page" : undefined}>Om mig</a></li>
     <li class="hover:font-bold"><a href="/contact/" class={linkClass("/contact/")} aria-current={pathname === "/contact/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
@@ -45,8 +47,8 @@ const linkClass = (path: string) => [
   const mobileMenu = document.getElementById("mobile-menu");
   const dropdownButton = document.getElementById("dropdown-button");
   const dropdownMenu = document.getElementById("dropdown-menu");
-  const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu")
-  const mobileDropdownButton = document.getElementById("mobile-dropdown-button")
+  const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
+  const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
 
   const menuSVG = `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
@@ -60,14 +62,14 @@ const linkClass = (path: string) => [
   const desktopDropdownIcon = document.getElementById("chevron-desktop");
   const mobileDropdownIcon = document.getElementById("chevron-mobile");
 
-  function setIconState(iconEl: HTMLElement | null, isOpen: any) {
-    if (!iconEl) return;
+  function setIconState(dropdownIcon: HTMLElement | null, isOpen: any) {
+    if (!dropdownIcon) return;
     if (isOpen) {
-      iconEl.classList.add("fa-chevron-up");
-      iconEl.classList.remove("fa-chevron-down");
+      dropdownIcon.classList.add("fa-chevron-up");
+      dropdownIcon.classList.remove("fa-chevron-down");
     } else {
-      iconEl.classList.add("fa-chevron-down");
-      iconEl.classList.remove("fa-chevron-up");
+      dropdownIcon.classList.add("fa-chevron-down");
+      dropdownIcon.classList.remove("fa-chevron-up");
     }
   }
 
@@ -95,30 +97,24 @@ const linkClass = (path: string) => [
     const logo = document.getElementById("eh-logo");
     const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
 
+    // Ser till att rätt logotyp visas beroende på vilket tema man har valt
     if (isHidden) {
       if (localStorage.getItem('theme') === 'light') {
-        /* html.classList.remove('dark'); */
         (logo as HTMLImageElement).src = "/src/logo-black.png";
       } else {
-        /* html.classList.add('dark'); */
         (logo as HTMLImageElement).src = "/src/logo-white.png";
       }
 
       if (isHome) {
         navbar?.classList.remove("text-white");
         navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
-      } else {
-        // On subpages, maybe add a different background or keep existing styles
-        // For example, don't change navbar classes or add your own
-      }
+      } else {}
     } else {
       if (isHome) {
         navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
         navbar?.classList.add("text-white");
         (logo as HTMLImageElement).src = "/src/logo-white.png";
-      } else {
-        // On subpages, keep the styles as they are or adjust accordingly
-      }
+      } else {}
     }
   });
 

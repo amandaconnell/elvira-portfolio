@@ -9,11 +9,13 @@ const { isHome, menuOpen } = Astro.props;
 <header
   class={`w-full z-50 ${isHome ? "fixed top-0 left-0" : "relative"}`} aria-label="Huvudnavigation"
 >
+  <!-- Skip-länk -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-1 focus:left-1 focus:outline-2 focus:outline-fuchsia-500 bg-white text-black z-50">Hoppa till huvudinnehåll</a>
-  <!-- TOP BAR (flex row only) -->
+  
   <div id="navbar"
-  class={`flex justify-between items-center py-6 ${isHome ? "text-white" : ""}`}
->
+    class={`flex justify-between items-center py-6 ${isHome ? "text-white" : ""}`}
+  >
+    <!-- Använder isHome för att justera utseendet på startsidan -->
     <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500">
       {isHome ? ( 
         <img id="eh-logo" src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="h-[55px]" />
@@ -35,34 +37,6 @@ const { isHome, menuOpen } = Astro.props;
     </div>
   </div>
 
-  <!-- MOBILE MENU LIVES BELOW THE FLEX ROW -->
+  <!-- Mobilmenyn lever nedanför navbar för att inte överlappa -->
   <MobileMenu menuOpen={menuOpen} />
 </header>
-
-<!-- <header class={`flex justify-between items-center py-6 bg-transparent w-full z-50 ${isHome ? 'fixed top-0 left-0 text-white' : 'relative'}`}>
-  <a href="/" class="flex items-center gap-3 ml-4 xl:ml-16">
-    {isHome ? (
-      // Visar alltid vit logotyp på startsidan
-      <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="h-[55px]" />
-    ) : (
-      // På övriga visas logotyp baserad på mörkt eller ljust tema
-      <>
-        <img src="/src/logo-white.png" alt="Elvira Holmberg logotyp" class="hidden dark:block h-[55px]" />
-        <img src="/src/logo-black.png" alt="Elvira Holmberg logotyp" class="block dark:hidden h-[55px]" />
-      </>
-    )}
-    <div class="flex flex-col">
-      <p class="font-bold text-xl sm:text-2xl">ELVIRA HOLMBERG</p>
-      <p class="text-sm sm:text-base">FOTOGRAF</p>
-    </div>
-  </a>
-  <div class="flex gap-2 ml-6 sm:gap-4 mr-4 xl:mr-16 lg:gap-12">
-    {!isHome && <ThemeToggle />}
-    <Navigation />
-  </div>
-  <MobileMenu menuOpen={menuOpen} />
-</header> -->
-
-<!-- This also doesn't work -->
-<!-- <MobileMenu class={isHome ? 'bg-red-500' : ''} /> -->
- 
