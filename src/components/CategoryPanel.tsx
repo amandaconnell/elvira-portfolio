@@ -63,7 +63,7 @@ const CategoryPanel: FunctionalComponent<CategoryPanelProps> = ({
   linkHref,
 }) => {
   return (
-    <div class="h-screen relative sm:flex-2 sm:hover:flex-6 transition-all duration-500 ease-out overflow-hidden">
+    <div class="h-screen relative overflow-hidden">
       <img class="object-cover h-full w-full" src={imageSrc} alt={altText} />
       <div class="absolute bottom-48 left-1/2 transform -translate-x-1/2 text-center text-white">
         <p>Kategori</p>
