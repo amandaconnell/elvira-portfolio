@@ -9,18 +9,91 @@ const pageTitle = "Kontakt"
             <h1 class="font-secondary text-6xl font-bold">{pageTitle}</h1>
             <div>
                 <i class="fa-solid fa-square-envelope fa-2xl"></i>
-                <a href="mailto:elviraholmb@gmail.com">elviraholmb@gmail.com</a>
+                <a href="mailto:elviraholmb@gmail.com" class="focus-visible:outline-2 focus-visible:outline-offset-4 
+                focus-visible:outline-fuchsia-500">elviraholmb@gmail.com</a>
             </div>
         </div>
         
-        <form action="" class="flex flex-col" autocomplete="on">
+        <form action="" id="contact-form" class="flex flex-col" autocomplete="on" novalidate>
             <label for="sender-name">Namn</label>
-            <input type="text" name="sender-name" id="sender-name" class="py-1 md:w-94 border rounded-sm mb-6">
-            <label for="sender-email">Email</label>
-            <input type="email" name="semder-email" id="sender-email" class="py-1 md:w-94 border rounded-sm mb-6" required>
-            <label for="message">Meddelande</label>
-            <textarea name="message" id="message" class="py-1 md:w-94 border rounded-sm mb-6" rows="8" required></textarea>
-            <button type="submit" class="flex self-start border rounded-full py-2 px-4 cursor-pointer">Skicka meddelande</button>
+            <input type="text" name="sender-name" id="sender-name" aria-describedby="name-error" aria-invalid="false"
+             class="p-2 md:w-94 border rounded-sm user-valid:border-green-600 user-invalid:border-red-600 
+             focus-visible:outline-2 focus-visible:outline-fuchsia-500" required>
+            <p id="name-error" class="text-red-600 text-sm"></p>
+
+            <label for="sender-email" class="mt-6">Email</label>
+            <input type="email" name="sender-email" id="sender-email" aria-describedby="email-error" 
+            aria-invalid="false" class="p-2 md:w-94 border rounded-sm user-valid:border-green-600 
+            user-invalid:border-red-600 focus-visible:outline-2 focus-visible:outline-fuchsia-500" required>
+            <p id="email-error" class="text-red-600 text-sm"></p>
+
+            <label for="message" class="mt-6">Meddelande</label>
+            <textarea name="message" id="message" aria-describedby="message-error" aria-invalid="false" 
+            class="p-2 md:w-94 border rounded-sm user-valid:border-green-600 user-invalid:border-red-600
+            focus-visible:outline-2 focus-visible:outline-fuchsia-500" 
+            rows="8" required></textarea>
+            <p id="message-error" class="text-red-600 text-sm"></p>
+            
+            <button type="submit" class="flex self-start border rounded-full py-2 px-4 mt-6 cursor-pointer
+            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500">
+                Skicka meddelande</button>
         </form>
     </div>
 </Layout>
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const errors = {
+            name: document.getElementById("name-error")!,
+            email: document.getElementById("email-error")!,
+            message: document.getElementById("message-error")!,
+        }
+
+        const fields = {
+            name: document.getElementById("sender-name") as HTMLInputElement,
+            email: document.getElementById("sender-email") as HTMLInputElement,
+            message: document.getElementById("message") as HTMLInputElement,
+        }
+
+        // För att rensa tidigare felmeddelanden
+        Object.values(errors).forEach(e => e.textContent = "");
+        Object.values(errors).forEach(f => f.setAttribute("aria-invalid", "false"));
+
+        const formData = new FormData(form);
+        const name = formData.get("sender-name")?.toString().trim() || "";
+        const email = formData.get("sender-email")?.toString().trim() || "";
+        const message = formData.get("message")?.toString().trim() || "";
+
+        let containsError = false;
+
+        if (!name) {
+            errors.name.innerHTML = `<i class="fa-solid fa-exclamation"></i> Fyll i ett namn`;
+            fields.name.setAttribute("aria-invalid", "true");
+            containsError = true;
+        }
+
+        if (!email) {
+            errors.email.innerHTML = `<i class="fa-solid fa-exclamation"></i> Fyll i en emailadress`;
+            fields.email.setAttribute("aria-invalid", "true");
+            containsError = true;
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+            errors.email.innerHTML = `<i class="fa-solid fa-exclamation"></i> Fyll i en giltig emailadress`;
+            fields.email.setAttribute("aria-invalid", "true");
+            containsError = true;
+        }
+
+        if (!message) {
+            errors.message.innerHTML = `<i class="fa-solid fa-exclamation"></i> Fyll i ett meddelande`;
+            fields.message.setAttribute("aria-invalid", "true");
+            containsError = true;
+        }
+
+        if (!containsError) {
+            form.reset();
+        }
+    })
+</script>
