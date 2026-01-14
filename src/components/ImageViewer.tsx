@@ -31,7 +31,12 @@ export default function ImageViewer({
     if (dialogRef.current && !dialogRef.current.open) {
       dialogRef.current.showModal();
       dialogRef.current.focus(); // Fokuserar på modalen när den öppnas
+      document.body.style.overflow = "hidden";
     }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   function close() {
@@ -61,14 +66,13 @@ export default function ImageViewer({
       ref={dialogRef}
       tabIndex={-1}
       aria-label="Bildvisare"
-      class=" fixed inset-0 w-screen h-screen max-w-none max-h-none m-0 p-0 bg-white/95 dark:bg-zinc-900/95 dark:text-white"
+      class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 p-0 border-none bg-white/95 dark:bg-zinc-900/95 dark:text-white"
       onKeyDown={keyControls}
-      style={{ border: "none" }}
     >
-      <div class="relative flex items-center justify-center min-h-screen">
+      <div class="relative grid grid-cols-[4rem_minmax(0,1fr)_4rem] items-center min-h-screen">
         <button
           onClick={close}
-          class="absolute top-4 right-8 focus-visible:outline"
+          class="absolute top-4 right-4 focus-visible:outline cursor-pointer"
           aria-label="Stäng bildvisare"
         >
           <i class="fa-solid fa-xmark"></i>
@@ -78,7 +82,7 @@ export default function ImageViewer({
           onClick={prev}
           disabled={index === 0}
           aria-label="Föregående bild"
-          class="absolute left-4 focus-visible:outline disabled:opacity-40"
+          class="justify-self-center p-4 focus-visible:outline disabled:opacity-40 cursor-pointer"
         >
           <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -86,14 +90,14 @@ export default function ImageViewer({
         <img
           src={image.src}
           alt={image.alt}
-          class="max-h-[90vh] max-w-[90vw] mr-4"
+          class="max-h-[90vh] max-w-full mx-auto"
         />
 
         <button
           onClick={next}
           disabled={index === images.length - 1}
           aria-label="Nästa bild"
-          class="absolute right-8 focus-visible:outline disabled:opacity-40"
+          class="justify-self-center p-4 focus-visible:outline disabled:opacity-40 cursor-pointer"
         >
           <i class="fa-solid fa-chevron-right"></i>
         </button>

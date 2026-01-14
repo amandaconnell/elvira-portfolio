@@ -7,3 +7,7 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}

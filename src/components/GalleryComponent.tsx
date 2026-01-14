@@ -28,7 +28,7 @@ export default function Gallery({ images }: GalleryProps) {
 
   return (
     <>
-      <div class="columns-2 sm:columns-4 gap-4 space-y-4">
+      <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         {images.map((img, index) => (
           <button
             key={img.src}

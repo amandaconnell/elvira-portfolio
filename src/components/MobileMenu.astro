@@ -4,7 +4,7 @@ import DropdownLinks from "./DropdownLinks.astro";
 const { isHome, menuOpen } = Astro.props;
 
 // För att använda olika klasser på olika sidor
-const baseClasses = "xl:hidden border-t border-gray-300 left-0 right-0 top-full z-40 transition-transform duration-300 ease-in-out";
+const baseClasses = "xl:hidden border-t border-gray-300 left-0 right-0 top-full z-40 overflow-y-auto max-h-[calc(100vh-6.5rem)] transition-transform duration-300 ease-in-out no-scrollbar";
 const homeClasses = "bg-white dark:bg-zinc-900 text-black";
 const subpageClasses = "bg-white dark:bg-zinc-900";
 const openMenuClasses = menuOpen ? "" : "hidden";
@@ -50,3 +50,35 @@ const linkClass = (path: string) => [
   </ul>
 </div>
 
+<!-- För att kunna fortsätta scrolla utanför mobilmenyn -->
+<!-- {isHome && (
+  <script is:inline>
+    const menu = document.getElementById("mobile-menu")
+
+    if (menu) {
+      menu.addEventListener("wheel", (e) => {
+        const delta = e.deltaY;
+        const canScrollUp = menu.scrollTop > 0;
+        const canScrollDown = menu.scrollTop + menu.clientHeight < menu.scrollHeight;
+
+        if ((delta < 0 && canScrollUp) || (delta > 0 && canScrollDown)) {
+          // Scrollar inuti menyn
+          e.preventDefault();
+          menu.scrollBy({ top: delta, behavior: "auto" });
+        }
+        // Annars fortsätter sidan att scrolla
+      }, { passive: false });
+
+      menu.addEventListener("wheel", (e) => {
+        const atTop = menu.scrollTop === 0 && e.deltaY < 0;
+        const atBottom = menu.scrollHeight - menu.clientHeight === menu.scrollTop && e.deltaY > 0;
+
+        if (atTop || atBottom) {
+          return; // Fortsätter scrolla på sidan utanför menyn
+        } else {
+          e.preventDefault(); // Scrollar bara inuti menyn
+        }
+      }, { passive: false });
+    }
+  </script>
+)} -->

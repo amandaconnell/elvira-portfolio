@@ -64,7 +64,6 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
                 </div>
               );
             })}
-            ;
           </div>
 
           {/* Knappar för att navigera mellan paneler */}

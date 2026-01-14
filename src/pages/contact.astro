@@ -13,11 +13,11 @@ const pageTitle = "Kontakt"
             </div>
         </div>
         
-        <form action="" class="flex flex-col">
-            <label for="name">Namn</label>
-            <input type="text" name="name" id="name" class="py-1 md:w-94 border rounded-sm mb-6">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="py-1 md:w-94 border rounded-sm mb-6" required>
+        <form action="" class="flex flex-col" autocomplete="on">
+            <label for="sender-name">Namn</label>
+            <input type="text" name="sender-name" id="sender-name" class="py-1 md:w-94 border rounded-sm mb-6">
+            <label for="sender-email">Email</label>
+            <input type="email" name="semder-email" id="sender-email" class="py-1 md:w-94 border rounded-sm mb-6" required>
             <label for="message">Meddelande</label>
             <textarea name="message" id="message" class="py-1 md:w-94 border rounded-sm mb-6" rows="8" required></textarea>
             <button type="submit" class="flex self-start border rounded-full py-2 px-4 cursor-pointer">Skicka meddelande</button>
