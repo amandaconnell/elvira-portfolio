@@ -51,7 +51,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
                   hidden={!isVisible} // Hindrar att man med tab-knappen kan navigera till paneler som inte är synliga
                   class={
                     isFlex
-                      ? `flex-2 hover:flex-6 focus-within:flex-6 transition-all duration-500 ease-out overflow-hidden`
+                      ? `flex-2 hover:flex-6 focus-within:flex-6 transition-all duration-500 motion-safe:transition-all motion-safe:duration-500 motion-reduce:transition-none motion-reduce:flex-6 ease-out overflow-hidden`
                       : ""
                   }
                 >
@@ -101,7 +101,9 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
 
       {/* Desktop: alla paneler synliga */}
       <div class="hidden xl:flex">
-        {panels.map((panel, index) => (
+        {renderPanels(panels.length, "flex w-full", true)}
+
+        {/* {panels.map((panel, index) => (
           <div
             key={index}
             class="flex-2 hover:flex-6 focus-within:flex-6 transition-all duration-500 ease-out overflow-hidden"
@@ -114,7 +116,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
               linkHref={panel.linkHref}
             />
           </div>
-        ))}
+        ))} */}
       </div>
 
       {/* Tablet: 3 paneler synliga åt gången */}

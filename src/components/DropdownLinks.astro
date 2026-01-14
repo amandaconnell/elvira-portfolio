@@ -3,7 +3,7 @@ const pathname = Astro.url.pathname;
 
 // För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
-  "block px-4 py-2 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700",
+  "block px-4 py-2 lg:py-4 hover:bg-gray-100 hover:rounded-lg dark:hover:bg-zinc-700 focus-visible:outline-none focus-visible:border-l-12 focus-visible:bg-gray-100 focus-visible:dark:bg-zinc-700 focus-visible:border-fuchsia-500",
   pathname === path && "font-bold",
 ].filter(Boolean).join(" ");
 ---
@@ -14,3 +14,4 @@ const linkClass = (path: string) => [
 <li><a href="/four/" class={linkClass("/four/")} aria-current={pathname === "/four/" ? "page" : undefined}>Kategori 4</a></li>
 <li><a href="/five/" class={linkClass("/five/")} aria-current={pathname === "/five/" ? "page" : undefined}>Kategori 5</a></li>
 
+<div class="focus-visible:dark"></div>

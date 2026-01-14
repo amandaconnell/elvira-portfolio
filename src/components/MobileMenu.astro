@@ -13,7 +13,7 @@ const pathname = Astro.url.pathname;
 
 // För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
-  "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg",
+  "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg focus-visible:outline-none focus-visible:border-l-12 focus-visible:bg-gray-100 focus-visible:dark:bg-zinc-700 focus-visible:border-fuchsia-500",
   pathname === path && "font-bold",
 ].filter(Boolean).join(" ");
 ---
@@ -29,7 +29,7 @@ const linkClass = (path: string) => [
       <button 
         aria-expanded="false" 
         aria-controls="mobile-dropdown-menu" aria-label="Öppna undermeny"
-        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg w-full text-left cursor-pointer"
+        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:rounded-lg w-full text-left cursor-pointer focus-visible:outline-none focus-visible:border-l-12 focus-visible:bg-gray-100 focus-visible:dark:bg-zinc-700 focus-visible:border-fuchsia-500"
         id="mobile-dropdown-button"
       >
         Portfolio <i id="chevron-mobile" class="fa-solid fa-chevron-down fa-xs"></i>

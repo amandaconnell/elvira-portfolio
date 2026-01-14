@@ -4,6 +4,7 @@ const pathname = Astro.url.pathname;
 
 // För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
+  "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500",
   pathname === path && "pb-2 border-b-2",
 ].filter(Boolean).join(" ");
 ---
@@ -16,14 +17,14 @@ const linkClass = (path: string) => [
       <button 
         aria-expanded="false" 
         aria-controls="dropdown-menu" aria-label="Öppna undermeny"
-        class="w-full text-left hover:font-bold xl:text-center"
+        class="w-full text-left hover:font-bold xl:text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
         id="dropdown-button">
           Portfolio <i id="chevron-desktop" class="fa-solid fa-chevron-down fa-xs"></i>
       </button>
       
       <ul 
         id="dropdown-menu" 
-        class="hidden bg-white text-black dark:bg-zinc-900 dark:text-zinc-300 rounded py-4 lg:absolute lg:mt-4 lg:top-full lg:left-0 lg:w-48 z-50"
+        class="hidden bg-white text-black dark:bg-zinc-900 dark:text-zinc-300 rounded py-0 lg:absolute lg:mt-0 lg:top-12 lg:left-0 lg:w-48 z-50"
         role="menu"
         aria-labelledby="dropdown-button">
           <DropdownLinks />
@@ -100,9 +101,9 @@ const linkClass = (path: string) => [
     // Ser till att rätt logotyp visas beroende på vilket tema man har valt
     if (isHidden) {
       if (localStorage.getItem('theme') === 'light') {
-        (logo as HTMLImageElement).src = "/src/logo-black.png";
+        (logo as HTMLImageElement).src = "/images/logo-black.png";
       } else {
-        (logo as HTMLImageElement).src = "/src/logo-white.png";
+        (logo as HTMLImageElement).src = "/images/logo-white.png";
       }
 
       if (isHome) {
@@ -113,7 +114,7 @@ const linkClass = (path: string) => [
       if (isHome) {
         navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
         navbar?.classList.add("text-white");
-        (logo as HTMLImageElement).src = "/src/logo-white.png";
+        (logo as HTMLImageElement).src = "/images/logo-white.png";
       } else {}
     }
   });
