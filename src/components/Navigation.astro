@@ -82,41 +82,50 @@ const linkClass = (path: string) => [
     setIconState(mobileDropdownIcon, isOpen);
   }
 
+  function applyNavbarState(menuOpen: boolean) {
+    const navbar = document.getElementById("navbar");
+    const logo = document.getElementById("eh-logo") as HTMLImageElement | null;
+    const isHome = window.location.pathname === "/" || window.location.pathname === "/index.html";
+
+    const theme = localStorage.getItem("theme") ?? "light";
+    const darkTheme = theme === "dark";
+
+    if (!navbar || !logo) return;
+
+    if (menuOpen) {
+      navbar.classList.remove("bg-transparent", "text-white");
+      navbar.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+      
+      logo.src = darkTheme ? "/images/logo-white.png" : "/images/logo-black.png";
+    } else {
+      if (isHome) {
+        navbar.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
+        navbar.classList.add("bg-transparent", "text-white");
+
+        logo.src = "/images/logo-white.png";
+      } else {
+        navbar.classList.remove("bg-transparent", "text-white");
+        navbar.classList.add("bg-white", "text-black", darkTheme ? "dark:bg-zinc-900 dark:text-zinc-300" : "");
+
+        logo.src = darkTheme ? "/images/logo-white.png" : "/images/logo-black.png";
+      } 
+    }
+  }
+
   // Öppnar mobilmenyn och skiftar ikon
   mobileMenuButton?.addEventListener("click", () => {
-    const isHidden = mobileMenu?.classList.contains("hidden");
     mobileMenu?.classList.toggle("hidden");
-
+    const menuOpen = !(mobileMenu?.classList.contains("hidden") ?? true);
+    
     mobileMenuButton.style.transition = "opacity 0.2s ease";
     mobileMenuButton.style.opacity = "0";
+
     setTimeout(() => {
-      mobileMenuButton.innerHTML = isHidden ? closeSVG : menuSVG;
+      mobileMenuButton.innerHTML = menuOpen ? closeSVG : menuSVG;
       mobileMenuButton.style.opacity = "1";
     }, 200);
 
-    const navbar = document.getElementById("navbar");
-    const logo = document.getElementById("eh-logo");
-    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-
-    // Ser till att rätt logotyp visas beroende på vilket tema man har valt
-    if (isHidden) {
-      if (localStorage.getItem('theme') === 'light') {
-        (logo as HTMLImageElement).src = "/images/logo-black.png";
-      } else {
-        (logo as HTMLImageElement).src = "/images/logo-white.png";
-      }
-
-      if (isHome) {
-        navbar?.classList.remove("text-white");
-        navbar?.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
-      } else {}
-    } else {
-      if (isHome) {
-        navbar?.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
-        navbar?.classList.add("text-white");
-        (logo as HTMLImageElement).src = "/images/logo-white.png";
-      } else {}
-    }
+    applyNavbarState(menuOpen);
   });
 
   // Öppnar undermenyn inuti mobilmenyn

@@ -49,36 +49,3 @@ const linkClass = (path: string) => [
     <li><a href="/contact/" class={linkClass("/contact/")} aria-current={pathname === "/contact/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
 </div>
-
-<!-- För att kunna fortsätta scrolla utanför mobilmenyn -->
-<!-- {isHome && (
-  <script is:inline>
-    const menu = document.getElementById("mobile-menu")
-
-    if (menu) {
-      menu.addEventListener("wheel", (e) => {
-        const delta = e.deltaY;
-        const canScrollUp = menu.scrollTop > 0;
-        const canScrollDown = menu.scrollTop + menu.clientHeight < menu.scrollHeight;
-
-        if ((delta < 0 && canScrollUp) || (delta > 0 && canScrollDown)) {
-          // Scrollar inuti menyn
-          e.preventDefault();
-          menu.scrollBy({ top: delta, behavior: "auto" });
-        }
-        // Annars fortsätter sidan att scrolla
-      }, { passive: false });
-
-      menu.addEventListener("wheel", (e) => {
-        const atTop = menu.scrollTop === 0 && e.deltaY < 0;
-        const atBottom = menu.scrollHeight - menu.clientHeight === menu.scrollTop && e.deltaY > 0;
-
-        if (atTop || atBottom) {
-          return; // Fortsätter scrolla på sidan utanför menyn
-        } else {
-          e.preventDefault(); // Scrollar bara inuti menyn
-        }
-      }, { passive: false });
-    }
-  </script>
-)} -->
