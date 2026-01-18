@@ -3,13 +3,14 @@
 import { useState, useRef } from "preact/hooks";
 import ImageViewer from "./ImageViewer";
 
-type ImageProps = {
-  src: string;
+type ImageItem = {
+  thumbnail: string;
+  full: string;
   alt: string;
 };
 
 type GalleryProps = {
-  images: ImageProps[];
+  images: ImageItem[];
 };
 
 export default function Gallery({ images }: GalleryProps) {
@@ -31,20 +32,20 @@ export default function Gallery({ images }: GalleryProps) {
       <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         {images.map((img, index) => (
           <button
-            key={img.src}
+            key={img.full}
             onClick={() => setActiveIndex(index)}
             class="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
           >
-            <img src={img.src} alt={img.alt} />
+            <img src={img.thumbnail} alt={img.alt} />
           </button>
         ))}
       </div>
 
       {activeIndex !== null && (
         <ImageViewer
-          images={images}
+          images={images.map((img) => ({ src: img.full, alt: img.alt }))}
           startIndex={activeIndex}
-          onClose={() => setActiveIndex(null)}
+          onClose={closeModal}
         />
       )}
     </>

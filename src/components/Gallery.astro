@@ -1,17 +1,10 @@
 ---
 import GalleryComponent from "../components/GalleryComponent";
-const { pageTitle } = Astro.props;
+import albums from "../data/albums.json";
 
-const images = [
-  {
-    src: "https://placehold.co/1000x600",
-    alt: "Sunlight filtering through trees in a forest",
-  },
-  {
-    src: "https://placehold.co/700x700",
-    alt: "Close-up of waves breaking on a rocky shore",
-  },
-];
+const { pageTitle, category } = Astro.props;
+
+const images = albums[category as keyof typeof albums] ?? [];
 ---
 
 <div class="mt-12 mb-20 sm:my-12 mx-4 md:mx-8 xl:mx-16">

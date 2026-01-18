@@ -1,0 +1,377 @@
+{
+  "flora": [
+    {
+      "thumbnail": "/images/thumbs/flora/img01.webp",
+      "full": "/images/full/flora/img01.webp",
+      "alt": "En vitsippa i närbild, sedd från sidan med pistiller fulla av gult pollen."
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img02.webp",
+      "full": "/images/full/flora/img02.webp",
+      "alt": "En vitsippa i närbild, vänd mot himlen med pistiller fulla av gult pollen."
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img03.webp",
+      "full": "/images/full/flora/img03.webp",
+      "alt": "En vitsippa med kronbladen fullt öppna."
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img04.webp",
+      "full": "/images/full/flora/img04.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img05.webp",
+      "full": "/images/full/flora/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img06.webp",
+      "full": "/images/full/flora/img06.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img07.webp",
+      "full": "/images/full/flora/img07.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img08.webp",
+      "full": "/images/full/flora/img08.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img09.webp",
+      "full": "/images/full/flora/img09.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img10.webp",
+      "full": "/images/full/flora/img10.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img11.webp",
+      "full": "/images/full/flora/img11.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img12.webp",
+      "full": "/images/full/flora/img12.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img13.webp",
+      "full": "/images/full/flora/img13.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img14.webp",
+      "full": "/images/full/flora/img14.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img15.webp",
+      "full": "/images/full/flora/img15.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img16.webp",
+      "full": "/images/full/flora/img16.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img17.webp",
+      "full": "/images/full/flora/img17.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img18.webp",
+      "full": "/images/full/flora/img18.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/flora/img19.webp",
+      "full": "/images/full/flora/img19.webp",
+      "alt": ""
+    }
+  ],
+  "fauna": [
+    {
+      "thumbnail": "/images/thumbs/fauna/img01.webp",
+      "full": "/images/full/fauna/img01.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img02.webp",
+      "full": "/images/full/fauna/img02.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img03.webp",
+      "full": "/images/full/fauna/img03.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img04.webp",
+      "full": "/images/full/fauna/img04.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img05.webp",
+      "full": "/images/full/fauna/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img05.webp",
+      "full": "/images/full/fauna/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img06.webp",
+      "full": "/images/full/fauna/img06.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img07.webp",
+      "full": "/images/full/fauna/img07.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img08.webp",
+      "full": "/images/full/fauna/img08.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img09.webp",
+      "full": "/images/full/fauna/img09.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img10.webp",
+      "full": "/images/full/fauna/img10.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img11.webp",
+      "full": "/images/full/fauna/img11.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img12.webp",
+      "full": "/images/full/fauna/img12.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img13.webp",
+      "full": "/images/full/fauna/img13.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img14.webp",
+      "full": "/images/full/fauna/img14.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img15.webp",
+      "full": "/images/full/fauna/img15.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img16.webp",
+      "full": "/images/full/fauna/img16.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img17.webp",
+      "full": "/images/full/fauna/img17.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fauna/img18.webp",
+      "full": "/images/full/fauna/img18.webp",
+      "alt": ""
+    }
+  ],
+  "landskap": [
+    {
+      "thumbnail": "/images/thumbs/landskap/img01.webp",
+      "full": "/images/full/landskap/img01.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img02.webp",
+      "full": "/images/full/landskap/img02.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img03.webp",
+      "full": "/images/full/landskap/img03.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img04.webp",
+      "full": "/images/full/landskap/img04.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img05.webp",
+      "full": "/images/full/landskap/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img06.webp",
+      "full": "/images/full/landskap/img06.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img07.webp",
+      "full": "/images/full/landskap/img07.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img08.webp",
+      "full": "/images/full/landskap/img08.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img09.webp",
+      "full": "/images/full/landskap/img09.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img10.webp",
+      "full": "/images/full/landskap/img10.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img11.webp",
+      "full": "/images/full/landskap/img11.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img12.webp",
+      "full": "/images/full/landskap/img12.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img13.webp",
+      "full": "/images/full/landskap/img13.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/landskap/img14.webp",
+      "full": "/images/full/landskap/img14.webp",
+      "alt": ""
+    }
+  ],
+  "fyrfota": [
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img01.webp",
+      "full": "/images/full/fyrfota/img01.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img02.webp",
+      "full": "/images/full/fyrfota/img02.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img03.webp",
+      "full": "/images/full/fyrfota/img03.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img04.webp",
+      "full": "/images/full/fyrfota/img04.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img05.webp",
+      "full": "/images/full/fyrfota/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img06.webp",
+      "full": "/images/full/fyrfota/img06.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img07.webp",
+      "full": "/images/full/fyrfota/img07.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img08.webp",
+      "full": "/images/full/fyrfota/img08.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img09.webp",
+      "full": "/images/full/fyrfota/img09.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/fyrfota/img10.webp",
+      "full": "/images/full/fyrfota/img10.webp",
+      "alt": ""
+    }
+  ],
+  "nattetid": [
+    {
+      "thumbnail": "/images/thumbs/nattetid/img01.webp",
+      "full": "/images/full/nattetid/img01.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img02.webp",
+      "full": "/images/full/nattetid/img02.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img03.webp",
+      "full": "/images/full/nattetid/img03.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img04.webp",
+      "full": "/images/full/nattetid/img04.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img05.webp",
+      "full": "/images/full/nattetid/img05.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img06.webp",
+      "full": "/images/full/nattetid/img06.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img07.webp",
+      "full": "/images/full/nattetid/img07.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img08.webp",
+      "full": "/images/full/nattetid/img08.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img09.webp",
+      "full": "/images/full/nattetid/img09.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img10.webp",
+      "full": "/images/full/nattetid/img10.webp",
+      "alt": ""
+    },
+    {
+      "thumbnail": "/images/thumbs/nattetid/img11.webp",
+      "full": "/images/full/nattetid/img11.webp",
+      "alt": ""
+    }
+  ]
+}

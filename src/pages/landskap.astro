@@ -1,9 +1,11 @@
 ---
 import Gallery from "../components/Gallery.astro"
 import Layout from "../layouts/Layout.astro"
-const pageTitle = "Kategori 1"
+
+const pageTitle = "Landskap"
+const category = "landskap"
 ---
 
 <Layout pageTitle={pageTitle}>
-    <Gallery pageTitle={pageTitle} />
+    <Gallery pageTitle={pageTitle} category={category} />
 </Layout>
