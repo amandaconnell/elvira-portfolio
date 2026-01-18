@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "deploy": "gh-pages -d dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,6 +19,7 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2"
