@@ -93,7 +93,7 @@ export default function ImageViewer({
     <dialog
       ref={dialogRef}
       aria-label="Bildvisare"
-      class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 p-0 border-none bg-white/97 dark:bg-zinc-900/97 dark:text-white"
+      class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 p-0 border-none bg-white/97 dark:bg-zinc-900/99 dark:text-white"
       onKeyDown={keyControls}
     >
       <div class="relative grid grid-cols-[4rem_minmax(0,1fr)_4rem] items-center min-h-screen">
