@@ -1,5 +1,6 @@
 ---
-const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+const pathname = Astro.url.pathname.replace(base, "/");
 
 // För att återanvända klasserna och indikera vilken sida användaren befinner sig på
 const linkClass = (path: string) => [
@@ -8,10 +9,10 @@ const linkClass = (path: string) => [
 ].filter(Boolean).join(" ");
 ---
 
-<li><a href="/flora/" class={linkClass("/flora/")} aria-current={pathname === "/flora/" ? "page" : undefined}>Flora</a></li>
-<li><a href="/fauna/" class={linkClass("/fauna/")} aria-current={pathname === "/fauna/" ? "page" : undefined}>Fauna</a></li>
-<li><a href="/landskap/" class={linkClass("/landskap/")} aria-current={pathname === "/landskap/" ? "page" : undefined}>Landskap</a></li>
-<li><a href="/fyrfota/" class={linkClass("/fyrfota/")} aria-current={pathname === "/fyrfota/" ? "page" : undefined}>Fyrfota</a></li>
-<li><a href="/nattetid/" class={linkClass("/nattetid/")} aria-current={pathname === "/nattetid/" ? "page" : undefined}>Nattetid</a></li>
+<li><a href={`${import.meta.env.BASE_URL}flora/`} class={linkClass("/flora/")} aria-current={pathname === "/flora/" ? "page" : undefined}>Flora</a></li>
+<li><a href={`${import.meta.env.BASE_URL}fauna/`} class={linkClass("/fauna/")} aria-current={pathname === "/fauna/" ? "page" : undefined}>Fauna</a></li>
+<li><a href={`${import.meta.env.BASE_URL}landskap/`} class={linkClass("/landskap/")} aria-current={pathname === "/landskap/" ? "page" : undefined}>Landskap</a></li>
+<li><a href={`${import.meta.env.BASE_URL}fyrfota/`} class={linkClass("/fyrfota/")} aria-current={pathname === "/fyrfota/" ? "page" : undefined}>Fyrfota</a></li>
+<li><a href={`${import.meta.env.BASE_URL}nattetid/`} class={linkClass("/nattetid/")} aria-current={pathname === "/nattetid/" ? "page" : undefined}>Nattetid</a></li>
 
 <div class="focus-visible:dark"></div>

@@ -11,7 +11,7 @@ const linkClass = (path: string) => [
 
 <nav>
   <ul id="nav-links" class="hidden lg:flex gap-12 font-medium text-xl items-center">
-    <li class="hover:font-bold"><a href="/" class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
+    <li class="hover:font-bold"><a href={`${import.meta.env.BASE_URL}/`} class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
 
     <li class="relative w-full lg:w-auto">
       <button 
@@ -31,8 +31,8 @@ const linkClass = (path: string) => [
         </ul>
     </li>
 
-    <li class="hover:font-bold"><a href="/om-mig/" class={linkClass("/om-mig/")} aria-current={pathname === "/om-mig/" ? "page" : undefined}>Om mig</a></li>
-    <li class="hover:font-bold"><a href="/kontakt/" class={linkClass("/kontakt/")} aria-current={pathname === "/kontakt/" ? "page" : undefined}>Kontakt</a></li>
+    <li class="hover:font-bold"><a href={`${import.meta.env.BASE_URL}om-mig`} class={linkClass("/om-mig/")} aria-current={pathname === "/om-mig/" ? "page" : undefined}>Om mig</a></li>
+    <li class="hover:font-bold"><a href={`${import.meta.env.BASE_URL}kontakt`} class={linkClass("/kontakt/")} aria-current={pathname === "/kontakt/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
 </nav>
 
@@ -50,6 +50,8 @@ const linkClass = (path: string) => [
   const dropdownMenu = document.getElementById("dropdown-menu");
   const mobileDropdownMenu = document.getElementById("mobile-dropdown-menu");
   const mobileDropdownButton = document.getElementById("mobile-dropdown-button");
+
+  const BASE_URL = "{import.meta.env.BASE_URL}";
 
   const menuSVG = `<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M9 18h11"></path>
@@ -85,7 +87,9 @@ const linkClass = (path: string) => [
   function applyNavbarState(menuOpen: boolean) {
     const navbar = document.getElementById("navbar");
     const logo = document.getElementById("eh-logo") as HTMLImageElement | null;
-    const isHome = window.location.pathname === "/" || window.location.pathname === "/index.html";
+    
+    const BASE_URL = import.meta.env.BASE_URL;
+    const isHome = window.location.pathname === BASE_URL || window.location.pathname === `${BASE_URL}index.html`;
 
     const theme = localStorage.getItem("theme") ?? "light";
     const darkTheme = theme === "dark";
@@ -96,18 +100,18 @@ const linkClass = (path: string) => [
       navbar.classList.remove("bg-transparent", "text-white");
       navbar.classList.add("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
       
-      logo.src = darkTheme ? "/images/logo-white.png" : "/images/logo-black.png";
+      logo.src = darkTheme ? `${BASE_URL}images/logo-white.png` : `${BASE_URL}images/logo-black.png`;
     } else {
       if (isHome) {
         navbar.classList.remove("bg-white", "text-black", "dark:bg-zinc-900", "dark:text-zinc-300");
         navbar.classList.add("bg-transparent", "text-white");
 
-        logo.src = "/images/logo-white.png";
+        logo.src = `${BASE_URL}images/logo-white.png`;
       } else {
         navbar.classList.remove("bg-transparent", "text-white");
         navbar.classList.add("bg-white", "text-black", darkTheme ? "dark:bg-zinc-900 dark:text-zinc-300" : "");
 
-        logo.src = darkTheme ? "/images/logo-white.png" : "/images/logo-black.png";
+        logo.src = darkTheme ? `${BASE_URL}images/logo-white.png` : `${BASE_URL}images/logo-black.png`;
       } 
     }
   }

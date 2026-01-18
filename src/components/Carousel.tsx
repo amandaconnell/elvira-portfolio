@@ -33,7 +33,7 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
   function renderPanels(
     visibleCount: number,
     wrapperClass = "", // För att justera layout
-    isFlex = false // För att panelerna alltid ska ha samma bredd
+    isFlex = false, // För att panelerna alltid ska ha samma bredd
   ) {
     const maxIndex = Math.max(0, panels.length - visibleCount);
 
@@ -102,21 +102,6 @@ const Carousel: FunctionalComponent<CarouselProps> = ({ panels }) => {
       {/* Desktop: alla paneler synliga */}
       <div class="hidden xl:flex">
         {renderPanels(panels.length, "flex w-full", true)}
-
-        {/* {panels.map((panel, index) => (
-          <div
-            key={index}
-            class="flex-2 hover:flex-6 focus-within:flex-6 transition-all duration-500 ease-out overflow-hidden"
-          >
-            <CategoryPanel
-              key={`${panel.category}-${index}`}
-              imageSrc={panel.imageSrc}
-              altText={panel.altText}
-              category={panel.category}
-              linkHref={panel.linkHref}
-            />
-          </div>
-        ))} */}
       </div>
 
       {/* Tablet: 3 paneler synliga åt gången */}

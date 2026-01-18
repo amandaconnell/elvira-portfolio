@@ -13,6 +13,8 @@ type GalleryProps = {
   images: ImageItem[];
 };
 
+const base = import.meta.env.BASE_URL;
+
 export default function Gallery({ images }: GalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -36,14 +38,17 @@ export default function Gallery({ images }: GalleryProps) {
             onClick={() => setActiveIndex(index)}
             class="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"
           >
-            <img src={img.thumbnail} alt={img.alt} />
+            <img src={`${base}${img.thumbnail}`} alt={img.alt} />
           </button>
         ))}
       </div>
 
       {activeIndex !== null && (
         <ImageViewer
-          images={images.map((img) => ({ src: img.full, alt: img.alt }))}
+          images={images.map((img) => ({
+            src: `${base}${img.full}`,
+            alt: img.alt,
+          }))}
           startIndex={activeIndex}
           onClose={closeModal}
         />

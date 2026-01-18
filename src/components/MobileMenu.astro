@@ -23,7 +23,7 @@ const linkClass = (path: string) => [
   class={`${baseClasses} ${isHome ? homeClasses : subpageClasses} ${openMenuClasses}`}
 >
   <ul class="flex flex-col py-4 font-medium text-xl">
-    <li><a href="/" class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
+    <li><a href={`${import.meta.env.BASE_URL}/`} class={linkClass("/")} aria-current={pathname === "/" ? "page" : undefined}>Hem</a></li>
 
     <li>
       <button 
@@ -45,7 +45,7 @@ const linkClass = (path: string) => [
       </ul>
     </li>
 
-    <li><a href="/om-mig/" class={linkClass("/om-mig/")} aria-current={pathname === "/om-mig/" ? "page" : undefined}>Om mig</a></li>
-    <li><a href="/kontakt/" class={linkClass("/kontakt/")} aria-current={pathname === "/kontakt/" ? "page" : undefined}>Kontakt</a></li>
+    <li><a href={`${import.meta.env.BASE_URL}om-mig`} class={linkClass("/om-mig/")} aria-current={pathname === "/om-mig/" ? "page" : undefined}>Om mig</a></li>
+    <li><a href={`${import.meta.env.BASE_URL}kontakt`} class={linkClass("/kontakt/")} aria-current={pathname === "/kontakt/" ? "page" : undefined}>Kontakt</a></li>
   </ul>
 </div>

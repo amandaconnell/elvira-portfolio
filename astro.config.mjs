@@ -11,7 +11,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  base: "/elvira-portfolio/",
+  base: "/~amco0004/portfolio/dist/",
 
   integrations: [preact()],
 });
