@@ -11,3 +11,21 @@
 @utility no-scrollbar {
   @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
+
+/* Ljust tema - för att matcha sidans färger när formuläret fylls automatiskt */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 32px #ffffff inset;
+  -webkit-text-fill-color: #000000;
+}
+
+/* Mörkt tema - för att matcha sidans färger när formuläret fylls automatiskt */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 20px #18181b inset;
+  -webkit-text-fill-color: #d4d4d8;
+}
