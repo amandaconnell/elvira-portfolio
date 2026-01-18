@@ -36,10 +36,10 @@ const { isHome = false } = Astro.props;
   
   </head>
 
-  <body class="dark:bg-zinc-900 dark:text-zinc-300">
+  <body class="dark:bg-zinc-900 dark:text-zinc-300 min-h-screen flex flex-col">
     <HeaderComponent isHome={isHome} />
 
-    <main id="main" class={`${isHome ? 'min-h-screen' : 'min-h-screen'}`}>
+    <main id="main" class={`flex-1 ${isHome ? "min-h-screen" : ""}`}>
       <slot />
     </main>
 
