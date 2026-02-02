@@ -11,7 +11,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  base: "/~amco0004/portfolio/dist/",
-
   integrations: [preact()],
 });

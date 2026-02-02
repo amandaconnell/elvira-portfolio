@@ -19,7 +19,6 @@ const CategoryPanel: FunctionalComponent<CategoryPanelProps> = ({
     <div class="h-screen relative overflow-hidden">
       <img class="object-cover h-full w-full" src={imageSrc} alt={altText} />
       <div class="absolute bottom-48 left-1/2 transform -translate-x-1/2 text-center text-white">
-        <p>Kategori</p>
         <a
           href={linkHref}
           class="inline-block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fuchsia-500"

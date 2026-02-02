@@ -3,34 +3,34 @@
 </button>
 
 <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const iconWrapper = document.getElementById('icon-wrapper');
+    const themeToggle = document.getElementById("theme-toggle");
+    const iconWrapper = document.getElementById("icon-wrapper");
     const html = document.documentElement;
 
     function updateTogglePosition() {
-        if (html.classList.contains('dark')) {
-            iconWrapper?.classList.remove('-translate-x-6'); // Flyttar ikonen åt vänster
+        if (html.classList.contains("dark")) {
+            iconWrapper?.classList.remove("-translate-x-6"); // Flyttar ikonen åt vänster
         } else {
-            iconWrapper?.classList.add('-translate-x-6'); // Flyttar ikonen åt höger
+            iconWrapper?.classList.add("-translate-x-6"); // Flyttar ikonen åt höger
         }
     }
     
-    document.addEventListener('DOMContentLoaded', updateTogglePosition);
+    document.addEventListener("DOMContentLoaded", updateTogglePosition);
 
     // När sidan laddas hämtas sparat val annars visas mörkt läge
-    if (localStorage.getItem('theme') === 'light') {
-        html.classList.remove('dark');
+    if (localStorage.getItem("theme") === "light") {
+        html.classList.remove("dark");
     } else {
-        html.classList.add('dark');
+        html.classList.add("dark");
     }
 
-    themeToggle?.addEventListener('click', () => {
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark'); // Byter till ljust tema
-            localStorage.setItem('theme', 'light');
+    themeToggle?.addEventListener("click", () => {
+        if (html.classList.contains("dark")) {
+            html.classList.remove("dark"); // Byter till ljust tema
+            localStorage.setItem("theme", "light");
         } else {
-            html.classList.add('dark'); // Byter till mörkt tema
-            localStorage.setItem('theme', 'dark');
+            html.classList.add("dark"); // Byter till mörkt tema
+            localStorage.setItem("theme", "dark");
         }
         updateTogglePosition();
     });
